@@ -6,3 +6,6 @@
 .DS_Store
 *.class
 local.properties
+.idea
+LiteServAndroid/build
+.gradle
