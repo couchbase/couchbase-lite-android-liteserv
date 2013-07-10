@@ -1,13 +1,15 @@
 package com.couchbase.liteservandroid;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
 import com.couchbase.cblite.CBLDatabase;
 import com.couchbase.cblite.CBLServer;
+import com.couchbase.cblite.CBLView;
+import com.couchbase.cblite.javascript.CBLJavaScriptViewCompiler;
 import com.couchbase.cblite.listener.CBLListener;
 
 import java.io.IOException;
@@ -24,6 +26,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showListenPort(getListenPort());
+
+        // Register the JavaScript view compiler
+        CBLView.setCompiler(new CBLJavaScriptViewCompiler());
+
         startCBLListener(getListenPort());
     }
 
