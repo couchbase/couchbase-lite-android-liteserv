@@ -65,6 +65,39 @@
       <excludeFolder url="file://$MODULE_DIR$/build/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
+    <content url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite">
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/src/instrumentTest/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/build/source/r/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/build/source/r/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/build/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLite/build/source/buildConfig/release" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp">
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/build/source/buildConfig/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/build/source/r/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/build/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/src/instrumentTest/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp/build/source/r/debug" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript">
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/buildConfig/test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/src/instrumentTest/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/r/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/r/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/buildConfig/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript/build/source/r/test" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener">
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener/build/source/r/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener/build/source/buildConfig/release" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener/build/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener/build/source/r/release" isTestSource="false" />
+    </content>
     <orderEntry type="jdk" jdkName="Android 4.2.2" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="support-v4-13.0.0" level="project" />
@@ -81,6 +114,8 @@
     <orderEntry type="library" name="slf4j-jdk14-1.6.1" level="project" />
     <orderEntry type="library" name="servlet-api-2.4" level="project" />
     <orderEntry type="library" name="webserver" level="project" />
+    <orderEntry type="library" name="CBLiteJavascript.aar" level="project" />
+    <orderEntry type="library" name="rhino-1.7R3" level="project" />
   </component>
 </module>
 
