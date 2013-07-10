@@ -1,4 +1,11 @@
-include ':LiteServAndroid', ':CBLite', ':CBLiteEktorp', ':CBLiteListener'
+
+include ':LiteServAndroid',
+        ':CBLite',
+        ':CBLiteEktorp',
+        ':CBLiteListener',
+        ':CBLiteJavascript'
+
 project(':CBLite').projectDir = new File(settingsDir, '../couchbase-lite-android/CouchbaseLiteProject/CBLite')
 project(':CBLiteEktorp').projectDir = new File(settingsDir, '../couchbase-lite-android/CouchbaseLiteProject/CBLiteEktorp')
 project(':CBLiteListener').projectDir = new File(settingsDir, '../couchbase-lite-android/CouchbaseLiteProject/CBLiteListener')
+project(':CBLiteJavascript').projectDir = new File(settingsDir, '../couchbase-lite-android/CouchbaseLiteProject/CBLiteJavascript')
