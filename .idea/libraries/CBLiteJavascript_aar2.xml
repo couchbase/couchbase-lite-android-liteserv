@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CBLiteJavascript.aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LiteServAndroid/build/exploded-bundles/CBLiteJavascript.aar/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
