@@ -27,5 +27,9 @@ die () {
 # launch activity
 adb shell am start -a android.intent.action.MAIN -n com.couchbase.liteservandroid/com.couchbase.liteservandroid.MainActivity --ei listen_port $*
 
-# port mapping
+# port mapping (only listens on localhost, unavailable from other machines on network)
 adb forward tcp:$* tcp:$*
+
+# make this port available to other machines on network.  
+# (note: replace 10.17.51.92 with ethernet iface address)
+# ./bin/node-http-proxy --port $* --host 10.17.51.92 --target localhost:$*
