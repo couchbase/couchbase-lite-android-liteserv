@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="webserver">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/LiteServAndroid/build/exploded-bundles/CBLiteListener.aar/libs/webserver.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
