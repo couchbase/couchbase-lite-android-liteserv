@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.4.3'
+        classpath 'com.android.tools.build:gradle:0.5.+'
     }
 }
 apply plugin: 'android'
@@ -16,7 +16,10 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:13.0.0'
+    compile 'com.android.support:support-v4:13.0.+'
+
+    compile fileTree(dir: 'libs', include: 'td_collator_so.jar')
+
     compile project(':CBLite')
     compile project(':CBLiteEktorp')
     compile project(':CBLiteListener')
