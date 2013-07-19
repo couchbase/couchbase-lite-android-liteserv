@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class MainActivity extends Activity {
 
-    private static final int DEFAULT_LISTEN_PORT = 5986;
+    private static final int DEFAULT_LISTEN_PORT = 5984;
     private static final String DATABASE_NAME = "cblite-test";
     private static final String LISTEN_PORT_PARAM_NAME = "listen_port";
     public static String TAG = "LiteServ";
@@ -25,12 +25,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        showListenPort(getListenPort());
 
         // Register the JavaScript view compiler
         CBLView.setCompiler(new CBLJavaScriptViewCompiler());
 
-        startCBLListener(getListenPort());
+        int port = startCBLListener(getListenPort());
+
+        showListenPort(port);
+
     }
 
     private void showListenPort(int listenPort) {
@@ -39,14 +41,18 @@ public class MainActivity extends Activity {
         listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s", listenPort, DATABASE_NAME));
     }
 
-    private void startCBLListener(int listenPort) {
+    private int startCBLListener(int suggestedListenPort) {
 
         CBLServer server = startCBLite();
         startDatabase(server, DATABASE_NAME);
 
-        CBLListener listener = new CBLListener(server, listenPort);
+        CBLListener listener = new CBLListener(server, suggestedListenPort);
+        int port = listener.getListenPort();
         Thread thread = new Thread(listener);
         thread.start();
+
+        return port;
+
     }
 
     protected CBLServer startCBLite() {
