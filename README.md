@@ -1,5 +1,4 @@
 
-
 LiteServAndroid is an HTTP (ReST) interface to the Couchbase-Lite database running on the device/emulator.  
 
 Here's how it fits into the picture:
@@ -35,6 +34,12 @@ Follow the instructions in the following sections of the  [Couchbase Lite Androi
 
 * Importing Project into Android Studio
 * Working around Import bugs
+
+## Building LiteServAndroid via Gradle command line
+
+```bash
+$ ./gradlew clean && ./gradlew build
+```
 
 ## Running LiteServAndroid via Gradle command line
 
