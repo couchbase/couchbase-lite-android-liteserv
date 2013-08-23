@@ -8,3 +8,6 @@
 local.properties
 LiteServAndroid/build
 .gradle
+
+*.iml
+.idea/
