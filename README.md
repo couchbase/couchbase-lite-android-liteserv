@@ -15,38 +15,20 @@ LiteServAndroid is useful for:
 * Testing 
 * Doing _pull_ replications where something else is pulling data from Couchbase-Lite 
 
-## Building LiteServAndroid
+## Getting LiteServAndroid
 
-LiteServAndroid requires the code for Couchbase-Lite to be on the filesystem, and it builds the Couchbase-Lite code directly as part of the build process.  This enables easy debugging and hacking on Couchbase-Lite.  
-
-* `git clone https://github.com/couchbaselabs/LiteServAndroid.git` to clone the git repo.
-
-* `cd LiteServAndroid` 
-
-* `cp local.properties.example local.properties` and customize local.properties to point to your SDK location if it is different than the default.
-
-* `cd ..` followed by `git clone https://github.com/couchbase/couchbase-lite-android.git` to get the Couchbase-Lite code in the place expected by CouchChat.  Your directory structure should look like this:
 
 ```
-.
-|-- LiteServAndroid
-|   |-- LiteServAndroid
-|   |   |-- build.gradle
-|   |   |-- libs
-|   |   `-- ...
-|   |-- README.md
-|   |-- build.gradle
-|   |-- gradle
-|   |-- gradlew
-|   `-- settings.gradle
-`-- couchbase-lite-android
-    |-- CouchbaseLiteProject
-    |   |-- CBLite
-    |   |-- ...
-    `-- README.md
+git clone https://github.com/couchbaselabs/LiteServAndroid.git
+git submodule init && git submodule update
 ```
 
-* `cd LiteServAndroid` followed by `./gradlew build` to build the code
+## Import Project into Android Studio
+
+See the [Couchbase Lite Android README](https://github.com/couchbase/couchbase-lite-android/blob/master/README.md) under the sections:
+
+* Importing Project into Android Studio
+* Working around Import bugs
 
 ## Running LiteServAndroid via Gradle command line
 
@@ -56,23 +38,10 @@ LiteServAndroid requires the code for Couchbase-Lite to be on the filesystem, an
 
 * Call `$ ./run_android_liteserv.sh 8080` to run it on port 8080.  This should install the app into the emulator and launch it, and then setup a port forwarding rule so that 8080 on your workstation is mapped to port 8080 on the emulator.
 
-
-## Opening LiteServAndroid in Android Studio
-
-* Run Android Studio
-
-* Choose File / Open .. or Open Project if you are on the Welcome screen.
-
-* Choose the top level LiteServAndroid directory (not the LiteServAndroid/LiteServAndroid subdirectory)
-
 ## Running LiteServAndroid via Android Studio
 
 * Go to Tools / Run or Tools / Debug menu
 
-
-## Enable browsing/debugging source code via Android Studio
-
-See the instructions in the [CouchChat README](https://github.com/couchbaselabs/CouchChatAndroid), as they are nearly identical.
 
 
 
