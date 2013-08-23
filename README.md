@@ -1,4 +1,3 @@
-
 LiteServAndroid is an HTTP (ReST) interface to the Couchbase-Lite database running on the device/emulator.  
 
 Here's how it fits into the picture:
@@ -19,6 +18,7 @@ LiteServAndroid is useful for:
 
 ```
 git clone https://github.com/couchbaselabs/LiteServAndroid.git
+cd LiteServAndroid.
 git submodule init && git submodule update
 ```
 
