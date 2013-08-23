@@ -21,7 +21,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: 'td_collator_so.jar')
 
     compile project(':CBLite')
-    compile project(':CBLiteEktorp')
     compile project(':CBLiteListener')
     compile project(':CBLiteJavascript')
 
