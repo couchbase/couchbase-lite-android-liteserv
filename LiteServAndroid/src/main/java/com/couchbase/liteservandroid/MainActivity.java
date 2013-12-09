@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
     }
 
     protected void startDatabase(Manager manager, String databaseName) {
-        Database database = manager.getExistingDatabase(databaseName);
+        Database database = manager.getDatabase(databaseName);
         database.open();
     }
 
