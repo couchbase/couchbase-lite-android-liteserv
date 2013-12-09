@@ -6,13 +6,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
-import com.couchbase.cblite.CBLDatabase;
-import com.couchbase.cblite.CBLServer;
-import com.couchbase.cblite.CBLView;
-import com.couchbase.cblite.javascript.CBLJavaScriptViewCompiler;
-import com.couchbase.cblite.listener.CBLListener;
-
-import java.io.IOException;
+import com.couchbase.lite.Database;
+import com.couchbase.lite.Manager;
+import com.couchbase.lite.View;
+import com.couchbase.lite.javascript.JavaScriptViewCompiler;
+import com.couchbase.lite.listener.LiteListener;
 
 public class MainActivity extends Activity {
 
@@ -27,7 +25,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Register the JavaScript view compiler
-        CBLView.setCompiler(new CBLJavaScriptViewCompiler());
+        View.setCompiler(new JavaScriptViewCompiler());
 
         int port = startCBLListener(getListenPort());
 
@@ -43,10 +41,10 @@ public class MainActivity extends Activity {
 
     private int startCBLListener(int suggestedListenPort) {
 
-        CBLServer server = startCBLite();
-        startDatabase(server, DATABASE_NAME);
+        Manager manager = startCBLite();
+        startDatabase(manager, DATABASE_NAME);
 
-        CBLListener listener = new CBLListener(server, suggestedListenPort);
+        LiteListener listener = new LiteListener(manager, suggestedListenPort);
         int port = listener.getListenPort();
         Thread thread = new Thread(listener);
         thread.start();
@@ -55,18 +53,14 @@ public class MainActivity extends Activity {
 
     }
 
-    protected CBLServer startCBLite() {
-        CBLServer server;
-        try {
-            server = new CBLServer(getFilesDir().getAbsolutePath());
-        } catch (IOException e) {
-           throw new RuntimeException(e);
-        }
-        return server;
+    protected Manager startCBLite() {
+        Manager manager;
+        manager = new Manager(getFilesDir(), Manager.DEFAULT_OPTIONS);
+        return manager;
     }
 
-    protected void startDatabase(CBLServer server, String databaseName) {
-        CBLDatabase database = server.getDatabaseNamed(databaseName, true);
+    protected void startDatabase(Manager manager, String databaseName) {
+        Database database = manager.getExistingDatabase(databaseName);
         database.open();
     }
 
