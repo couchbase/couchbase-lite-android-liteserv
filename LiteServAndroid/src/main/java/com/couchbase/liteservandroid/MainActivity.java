@@ -12,6 +12,8 @@ import com.couchbase.lite.View;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
 import com.couchbase.lite.listener.LiteListener;
 
+import java.io.IOException;
+
 public class MainActivity extends Activity {
 
     private static final int DEFAULT_LISTEN_PORT = 5984;
@@ -27,9 +29,13 @@ public class MainActivity extends Activity {
         // Register the JavaScript view compiler
         View.setCompiler(new JavaScriptViewCompiler());
 
-        int port = startCBLListener(getListenPort());
-
-        showListenPort(port);
+        try {
+            int port = startCBLListener(getListenPort());
+            showListenPort(port);
+        } catch (IOException e) {
+            TextView listenPortTextView = (TextView)findViewById(R.id.listen_port_textview);
+            listenPortTextView.setText(String.format("Error starting LiteServ"));
+        }
 
     }
 
@@ -39,7 +45,7 @@ public class MainActivity extends Activity {
         listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s", listenPort, DATABASE_NAME));
     }
 
-    private int startCBLListener(int suggestedListenPort) {
+    private int startCBLListener(int suggestedListenPort) throws IOException {
 
         Manager manager = startCBLite();
         startDatabase(manager, DATABASE_NAME);
@@ -53,7 +59,7 @@ public class MainActivity extends Activity {
 
     }
 
-    protected Manager startCBLite() {
+    protected Manager startCBLite() throws IOException {
         Manager manager;
         manager = new Manager(getFilesDir(), Manager.DEFAULT_OPTIONS);
         return manager;
