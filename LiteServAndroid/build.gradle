@@ -11,7 +11,7 @@ apply plugin: 'android'
 repositories {
     mavenCentral()
     maven {
-        url "http://maven.hq.couchbase.com/nexus/content/repositories/releases/"
+        url "http://files.couchbase.com/maven2/"
     }
 }
 
