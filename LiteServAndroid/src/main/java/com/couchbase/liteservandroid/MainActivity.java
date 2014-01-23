@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
@@ -32,9 +33,10 @@ public class MainActivity extends Activity {
         try {
             int port = startCBLListener(getListenPort());
             showListenPort(port);
-        } catch (IOException e) {
+        } catch (Exception e) {
             TextView listenPortTextView = (TextView)findViewById(R.id.listen_port_textview);
             listenPortTextView.setText(String.format("Error starting LiteServ"));
+            Log.e(TAG, "Error starting LiteServ", e);
         }
 
     }
@@ -45,7 +47,7 @@ public class MainActivity extends Activity {
         listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s", listenPort, DATABASE_NAME));
     }
 
-    private int startCBLListener(int suggestedListenPort) throws IOException {
+    private int startCBLListener(int suggestedListenPort) throws IOException, CouchbaseLiteException {
 
         Manager manager = startCBLite();
         startDatabase(manager, DATABASE_NAME);
@@ -65,7 +67,7 @@ public class MainActivity extends Activity {
         return manager;
     }
 
-    protected void startDatabase(Manager manager, String databaseName) {
+    protected void startDatabase(Manager manager, String databaseName) throws CouchbaseLiteException {
         Database database = manager.getDatabase(databaseName);
         database.open();
     }
