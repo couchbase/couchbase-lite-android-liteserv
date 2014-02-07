@@ -1,6 +1,8 @@
 
-include ':LiteServAndroid',
-        ':CBLite',
-        ':CBLiteListener',
-        ':CBLiteJavascript'
+include ':couchbase-lite-android-liteserv',
+	':libraries:couchbase-lite-android',
+	':libraries:couchbase-lite-java-core',	
+	':libraries:couchbase-lite-java-javascript',	
+	':libraries:couchbase-lite-java-listener'
+
 
