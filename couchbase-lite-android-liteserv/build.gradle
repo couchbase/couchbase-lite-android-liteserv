@@ -20,9 +20,11 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: 'td_collator_so.jar')
 
-    compile project(':CBLite')
-    compile project(':CBLiteListener')
-    compile project(':CBLiteJavascript')
+    compile project(':libraries:couchbase-lite-android')
+    compile project(':libraries:couchbase-lite-java-core')	
+    compile project(':libraries:couchbase-lite-java-javascript')
+    compile project(':libraries:couchbase-lite-java-listener')
+
 
 }
 
@@ -33,6 +35,10 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 19
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     // workaround for "duplicate files during packaging of APK" issue
