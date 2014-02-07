@@ -16,3 +16,6 @@
 [submodule "libraries/couchbase-lite-java-javascript"]
 	path = libraries/couchbase-lite-java-javascript
 	url = https://github.com/couchbase/couchbase-lite-android-javascript.git
+[submodule "libraries/couchbase-lite-java-core"]
+	path = libraries/couchbase-lite-java-core
+	url = https://github.com/couchbase/couchbase-lite-android-core.git
