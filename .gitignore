@@ -1,13 +1,13 @@
-
+/build
 \#*
 *~
 .#*
 \#*\#
-.DS_Store
-*.class
-local.properties
-LiteServAndroid/build
-.gradle
 
+*.class
+
+.idea
 *.iml
-.idea/
+.gradle
+local.properties
+/.DS_Store
