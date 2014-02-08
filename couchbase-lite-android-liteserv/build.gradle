@@ -15,18 +15,8 @@ repositories {
     }
 }
 
-dependencies {
-    compile 'com.android.support:support-v4:13.0.+'
-
-    compile fileTree(dir: 'libs', include: '*.jar')
-
-    compile project(':libraries:couchbase-lite-android')
-    compile project(':libraries:couchbase-lite-java-core')	
-    compile project(':libraries:couchbase-lite-java-javascript')
-    compile project(':libraries:couchbase-lite-java-listener')
-
-
-}
+apply from: 'dependencies-archive.gradle'    // <- enable this when building an .aar
+// apply from: 'dependencies-test.gradle'       // <- enable this when testing
 
 android {
     compileSdkVersion 19
