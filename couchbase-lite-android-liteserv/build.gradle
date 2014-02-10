@@ -15,8 +15,8 @@ repositories {
     }
 }
 
-apply from: 'dependencies-archive.gradle'    // <- enable this when building an .aar
-// apply from: 'dependencies-test.gradle'       // <- enable this when testing
+// apply from: 'dependencies-archive.gradle'    // <- enable this when building an .aar
+apply from: 'dependencies-test.gradle'       // <- enable this when testing
 
 android {
     compileSdkVersion 19
