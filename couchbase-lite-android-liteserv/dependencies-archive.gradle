@@ -4,8 +4,8 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: 'td_collator_so.jar')
 
-    compile 'com.couchbase.lite:android:1.0.0-beta3'
-    compile 'com.couchbase.lite:java-javascript:1.0.0-beta3'
-    compile 'com.couchbase.lite:java-listener:1.0.0-beta3'
+    compile 'com.couchbase.lite:android:1.0.0-beta3rc1'
+    compile 'com.couchbase.lite:java-javascript:1.0.0-beta3rc1'
+    compile 'com.couchbase.lite:java-listener:1.0.0-beta3rc1'
 
 }
