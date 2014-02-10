@@ -12,10 +12,10 @@
 	url = https://github.com/couchbase/couchbase-lite-android.git
 [submodule "libraries/couchbase-lite-java-listener"]
 	path = libraries/couchbase-lite-java-listener
-	url = https://github.com/couchbase/couchbase-lite-android-listener.git
+	url = https://github.com/couchbase/couchbase-lite-java-listener.git
 [submodule "libraries/couchbase-lite-java-javascript"]
 	path = libraries/couchbase-lite-java-javascript
-	url = https://github.com/couchbase/couchbase-lite-android-javascript.git
+	url = https://github.com/couchbase/couchbase-lite-java-javascript.git
 [submodule "libraries/couchbase-lite-java-core"]
 	path = libraries/couchbase-lite-java-core
-	url = https://github.com/couchbase/couchbase-lite-android-core.git
+	url = https://github.com/couchbase/couchbase-lite-java-core.git
