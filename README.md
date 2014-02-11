@@ -1,24 +1,24 @@
-LiteServAndroid is an HTTP (ReST) interface to the Couchbase-Lite database running on the device/emulator.  
+LiteServ is an HTTP (ReST) interface to the Couchbase-Lite database running on the device/emulator.  
 
 Here's how it fits into the picture:
 
 ![architecture.png](http://cl.ly/image/3i400h2Z0f1f/lite-serv-android.png)
 
-LiteServAndroid effectively _wraps_ CouchbaseLite and provides an API that can be accessed via HTTP.
+LiteServ effectively _wraps_ CouchbaseLite and provides an API that can be accessed via HTTP.
 
-LiteServAndroid is useful for:
+It is useful for:
 
 * Using Couchbase-Lite inside of a LiteGap app (eg, a Couchbase-Lite app based on PhoneGap)
 * Easy access to data in a Couchbase-Lite database via curl for debugging
 * Testing 
 * Doing _pull_ replications where something else is pulling data from Couchbase-Lite 
 
-## Getting LiteServAndroid
+## Getting LiteServ 
 
 
 ```
-git clone https://github.com/couchbaselabs/LiteServAndroid.git
-cd LiteServAndroid.
+git clone https://github.com/couchbaselabs/couchbase-lite-android-liteserv.git
+cd couchbase-lite-android-liteserv.
 git submodule init && git submodule update
 ```
 
@@ -49,9 +49,6 @@ $ ./gradlew clean && ./gradlew build
 
 * Call `$ ./run_android_liteserv.sh 8080` to run it on port 8080.  This should install the app into the emulator and launch it, and then setup a port forwarding rule so that 8080 on your workstation is mapped to port 8080 on the emulator.
 
-## Running LiteServAndroid via Android Studio
-
-* Go to Tools / Run or Tools / Debug menu
 
 
 
