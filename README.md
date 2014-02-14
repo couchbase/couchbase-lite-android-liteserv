@@ -4,7 +4,7 @@ Here's how it fits into the picture:
 
 ![architecture.png](http://cl.ly/image/3i400h2Z0f1f/lite-serv-android.png)
 
-LiteServ effectively _wraps_ CouchbaseLite and provides an API that can be accessed via HTTP.
+LiteServ effectively _wraps_ [Couchbase Lite](https://github.com/couchbase/couchbase-lite-android) and provides an API that can be accessed via HTTP.
 
 It is useful for:
 
