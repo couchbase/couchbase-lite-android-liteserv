@@ -4,28 +4,29 @@ require 'fileutils'
 TESTING_MODE="TESTING_MODE"
 ARTIFACTS_MODE="ARTIFACTS_MODE"
 
-GRADLE_FILES = ["CBLite/build.gradle", 
-               "CBLiteJavascript/build.gradle",
-               "CouchbaseLiteProject/build.gradle"]
+GRADLE_FILES = ["libraries/couchbase-lite-android/build.gradle", 
+               "libraries/couchbase-lite-java-javascript/build.gradle",
+               "build.gradle"]
 
 def uploadArchives() 
 
   # backup original file build.gradle files
   backupFiles(GRADLE_FILES)
 
-  # In the build.gradle file for CBLite, and CBLiteJavascript, set apply from: 'dependencies-test.gradle'
+  # In the build.gradle file set apply from: 'dependencies-test.gradle'
   build(TESTING_MODE)
-  uploadArchivesSingleLibrary("CBLite")
 
-  setArtifactsModeSingleFile("CBLiteJavascript/build.gradle")
-  uploadArchivesSingleLibrary("CBLiteJavascript")
+  uploadArchivesSingleLibrary("libraries/couchbase-lite-android")
+
+  setArtifactsModeSingleFile("libraries/couchbase-lite-java-javascript/build.gradle")
+  uploadArchivesSingleLibrary("libraries/couchbase-lite-java-javascript")
 
   # restore original files
   restoreFiles(GRADLE_FILES)
 
 end
 
-# upload the archives for a single library, eg, "CBLite"
+# upload the archives for a single library,
 def uploadArchivesSingleLibrary(libraryName)
   cmd = "./gradlew :#{libraryName}:uploadArchivesWrapper"
   puts cmd 
@@ -189,12 +190,15 @@ def buildZipArchiveRelease()
   runCommand "mv #{thirdPartyArchive} #{localArchive}"
   
   # collect the new cblite jar files and name them correctly based on UPLOAD_VERSION_CBLITE env var
-  modules = ["CBLite", "CBLiteJavascript", "CBLiteListener"]
+
+  modules = ["couchbase-lite-android", "couchbase-lite-java-javascript", "couchbase-lite-java-listener"]
   modules.each { |mod| 
-    src = "#{mod}/build/bundles/release/classes.jar"
+    src = "libraries/#{mod}/build/bundles/release/classes.jar"
     envVarName = "UPLOAD_VERSION_CBLITE"
-    if mod == "CBLiteJavascript"
+    if mod == "couchbase-lite-java-javascript"
       envVarName = "UPLOAD_VERSION_CBLITE_JAVASCRIPT"
+    elsif mod == "couchbase-lite-java-listener"
+           envVarName = "UPLOAD_VERSION_CBLITE_LISTENER"
     end
     envVarValue = ENV[envVarName]
     dest = "#{localArchive}/#{mod}-#{envVarValue}.jar"     

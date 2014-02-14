@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
 
-require "build_automation.rb"
+require "./build_automation.rb"
 
 buildTestingMode()
