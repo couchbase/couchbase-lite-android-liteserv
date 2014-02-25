@@ -11,4 +11,5 @@
 #
 # See also https://github.com/couchbase/couchbase-lite-android/wiki/Running-the-test-suite
 
-./gradlew clean && ./gradlew :CBLite:connectedInstrumentTest && ./gradlew :CBLiteJavascript:connectedInstrumentTest
+./gradlew clean && ./gradlew :couchbase-lite-android:connectedInstrumentTest
+# && ./gradlew :libraries:couchbase-lite-java-javascript:test
