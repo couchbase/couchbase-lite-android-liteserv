@@ -194,18 +194,23 @@ def buildZipArchiveRelease()
   
   # collect the new cblite jar files and name them correctly based on UPLOAD_VERSION_CBLITE env var
 
-  modules = ["couchbase-lite-android", "couchbase-lite-java-javascript", "couchbase-lite-java-listener"]
-  modules.each { |mod| 
-    src = "libraries/#{mod}/build/bundles/release/classes.jar"
+  modulesToPaths = {
+    "couchbase-lite-java-core" => "libraries/couchbase-lite-java-core/build/libs/couchbase-lite-java-core.jar",
+    "couchbase-lite-android" => "libraries/couchbase-lite-android/build/bundles/release/classes.jar",
+    "couchbase-lite-java-javascript" => "libraries/couchbase-lite-java-javascript/build/libs/couchbase-lite-java-javascript.jar",
+    "couchbase-lite-java-listener" => "libraries/couchbase-lite-java-listener/build/libs/couchbase-lite-java-listener.jar"
+  }
+
+  modulesToPaths.each { |mod, srcPath| 
     envVarName = "UPLOAD_VERSION_CBLITE"
     if mod == "couchbase-lite-java-javascript"
       envVarName = "UPLOAD_VERSION_CBLITE_JAVASCRIPT"
     elsif mod == "couchbase-lite-java-listener"
-           envVarName = "UPLOAD_VERSION_CBLITE_LISTENER"
+      envVarName = "UPLOAD_VERSION_CBLITE_LISTENER"
     end
     envVarValue = ENV[envVarName]
     dest = "#{localArchive}/#{mod}-#{envVarValue}.jar"     
-    cmd = "cp #{src} #{dest}"
+    cmd = "cp #{srcPath} #{dest}"
     runCommand cmd
   }
   
