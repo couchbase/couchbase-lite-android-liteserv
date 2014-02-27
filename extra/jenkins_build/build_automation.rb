@@ -50,7 +50,7 @@ def clean()
 end
 
 def buildCode() 
-  cmd = "./gradlew build"
+  cmd = "./gradlew assemble"
   puts cmd
   build_result = %x( #{cmd} )
   puts build_result
