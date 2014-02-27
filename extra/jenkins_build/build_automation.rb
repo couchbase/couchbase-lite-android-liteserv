@@ -178,6 +178,9 @@ def buildZipArchiveRelease()
   localArchive         = "cblite_android_#{android_REVISION}"
   localZipArchive      = "#{localArchive}.zip"
   
+  # create localarchive directory
+  runCommand "mkdir #{localArchive}"
+
   # download 3rd party jars into a zip file
   runCommand "cd    release && ./zip_jars.sh"
   runCommand "file  release/target/#{thirdPartyZipArchive} || exit 99"
