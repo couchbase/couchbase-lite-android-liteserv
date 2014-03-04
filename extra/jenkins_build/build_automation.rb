@@ -16,10 +16,13 @@ def uploadArchives()
   # In the build.gradle file set apply from: 'dependencies-test.gradle'
   build(TESTING_MODE)
 
-  uploadArchivesSingleLibrary("libraries/couchbase-lite-android")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-core")
+
+  setArtifactsModeSingleFile("libraries/couchbase-lite-android/build.gradle")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-android")
 
   setArtifactsModeSingleFile("libraries/couchbase-lite-java-javascript/build.gradle")
-  uploadArchivesSingleLibrary("libraries/couchbase-lite-java-javascript")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-javascript")
 
   # restore original files
   restoreFiles(GRADLE_FILES)
