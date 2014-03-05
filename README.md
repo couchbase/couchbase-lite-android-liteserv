@@ -30,16 +30,25 @@ git submodule init && git submodule update
 
 ## Import Project into Android Studio
 
-Follow the instructions in the following sections of the  [Couchbase Lite Android README](https://github.com/couchbase/couchbase-lite-android/blob/master/README.md):
+Follow the instructions in the following sections of the Couchbase Lite Android README on [Importing Project into Android Studio](https://github.com/couchbase/couchbase-lite-android/blob/master/README.md):
 
-* Importing Project into Android Studio
-* Working around Import bugs
+## Building and deploying maven artifacts.
+
+If you want to host and deploy your own maven artifacts, see the `extra/jenkins_build/upload_android_artifacts.sh` script.
 
 ## Building LiteServAndroid via Gradle command line
 
 ```bash
-$ ./gradlew clean && ./gradlew build
+$ ./gradlew clean && ./gradlew assemble
 ```
+
+## Running Unit tests
+
+See [Running unit tests for couchbase lite android](https://github.com/couchbase/couchbase-lite-android/wiki/Running-unit-tests-for-couchbase-lite-android)
+
+## Running LiteServAndroid via Android Studio
+
+Once the project is imported, just run the green arrow "play" button.  
 
 ## Running LiteServAndroid via Gradle command line
 
