@@ -2,9 +2,6 @@
 
 require "./build_automation.rb"
 
-puts "call buildTestingMode()"
-buildTestingMode()
-
-puts "call buildZipArchiveRelease()"
+build()
 buildZipArchiveRelease() 
 

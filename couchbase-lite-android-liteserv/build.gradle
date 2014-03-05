@@ -15,8 +15,31 @@ repositories {
     }
 }
 
-// apply from: 'dependencies-archive.gradle'    // <- enable this when building an .aar
-apply from: 'dependencies-test.gradle'       // <- enable this when testing
+def buildLiteServWithArtifacts = System.getProperty("buildLiteServWithArtifacts")
+
+dependencies {
+
+    compile 'com.android.support:support-v4:13.0.+'
+
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+    compile buildLiteServWithArtifacts == null ?
+            project(':libraries:couchbase-lite-java-core') :
+            'com.couchbase.lite:java-core:' + System.getenv("UPLOAD_VERSION_CBLITE")
+
+    compile buildLiteServWithArtifacts == null ?
+            project(':libraries:couchbase-lite-android') :
+            'com.couchbase.lite:android:' + System.getenv("UPLOAD_VERSION_CBLITE")
+
+    compile buildLiteServWithArtifacts == null ?
+            project(':libraries:couchbase-lite-java-javascript') :
+            'com.couchbase.lite:java-javascript:' + System.getenv("UPLOAD_VERSION_CBLITE")
+
+    compile buildLiteServWithArtifacts == null ?
+            project(':libraries:couchbase-lite-java-listener') :
+            'com.couchbase.lite:java-listener:' + System.getenv("UPLOAD_VERSION_CBLITE")
+
+}
 
 android {
     compileSdkVersion 19

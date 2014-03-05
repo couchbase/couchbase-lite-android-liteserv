@@ -2,4 +2,4 @@
 
 require "./build_automation.rb"
 
-buildTestingMode()
+build()
