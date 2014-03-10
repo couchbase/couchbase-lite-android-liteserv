@@ -30,6 +30,8 @@ git submodule init && git submodule update
 
 ## Import Project into Android Studio
 
+**Note**: this project is known to work on Android Studio 0.4.3 and earlier 0.4.X versions, but is not working on Android Studio 0.4.4 or later due to this [Android Studio bug](https://code.google.com/p/android/issues/detail?id=65915)
+
 Follow the instructions in the following sections of the Couchbase Lite Android README on [Importing Project into Android Studio](https://github.com/couchbase/couchbase-lite-android/blob/master/README.md):
 
 ## Building and deploying maven artifacts.
