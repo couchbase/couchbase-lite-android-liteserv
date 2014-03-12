@@ -42,5 +42,11 @@
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
+        
+        <file>
+            <source> ${ZIP_HOME}/td_collator_so-${td_collator.version}.jar </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
     </files>
 </assembly>
