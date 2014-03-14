@@ -28,6 +28,8 @@
         <LICENSE_DIR>${basedir}</LICENSE_DIR>
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
         
+        <TARGET_DIR>${basedir}/../cblite_android_${REVISION}</TARGET_DIR>
+        
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
     </properties>
     
@@ -130,7 +132,17 @@
                                          <include name="${LICENSE_FILE}"                              />
                                      </fileset>
                                  </copy>
-
+                                 
+                                 <!-- locally built  -->
+                                 
+                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true">
+                                     <fileset dir="${TARGET_DIR}">
+                                         <include name="**/couchbase-lite-*.jar" />
+                                     </fileset>
+                                 </copy>
+                                 
+                                 <!-- third-party    -->
+                                 
                                  <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true">
                                      <fileset dir="${local-m2dir}">
                                          <include name="**/rhino-${rhino.version}.jar"                />

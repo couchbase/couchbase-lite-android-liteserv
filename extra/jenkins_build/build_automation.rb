@@ -90,7 +90,7 @@ def buildZipArchiveRelease()
   
   android_VERSION  = ENV["VERSION"]
   android_REVISION = ENV["REVISION"]
-  thirdPartyArchive    = "com.couchbase.cblite-#{android_VERSION}"
+  thirdPartyArchive    = "com.couchbase.cblite-#{android_REVISION}"
   thirdPartyZipArchive = "#{thirdPartyArchive}-android.zip"
   localArchive         = "cblite_android_#{android_REVISION}"
   localZipArchive      = "#{localArchive}.zip"
@@ -99,7 +99,7 @@ def buildZipArchiveRelease()
   runCommand "mkdir #{localArchive}"
 
   # download 3rd party jars into a zip file
-  runCommand "cd    release && ./zip_jars.sh"
+  runCommand "cd    release && ./zip_jars.sh #{android_REVISION}"
   runCommand "file  release/target/#{thirdPartyZipArchive} || exit 99"
   runCommand "cp    release/target/#{thirdPartyZipArchive} ."
   

@@ -7,10 +7,32 @@
     </formats>
     <files>
         <file>
-            <source> ${ZIP_HOME}/${LICENSE_FILE}                           </source>
+            <source> ${ZIP_HOME}/${LICENSE_FILE}    </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
+                                 <!-- locally built  -->
+        <file>
+            <source> ${ZIP_HOME}/coucbase-lite-android-${REVISION}.jar         </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
+        <file>
+            <source> ${ZIP_HOME}/coucbase-lite-java-core-${REVISION}.jar       </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
+        <file>
+            <source> ${ZIP_HOME}/coucbase-lite-java-javascript-${REVISION}.jar </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
+        <file>
+            <source> ${ZIP_HOME}/coucbase-lite-java-listener-${REVISION}.jar   </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
+                                 <!-- third-party    -->
         <file>
             <source> ${ZIP_HOME}/rhino-${rhino.version}.jar                </source>
             <outputDirectory>/</outputDirectory>
