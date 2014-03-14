@@ -10,6 +10,7 @@ import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
+import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
 import com.couchbase.lite.listener.LiteListener;
 
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
 
     protected Manager startCBLite() throws IOException {
         Manager manager;
-        manager = new Manager(getFilesDir(), Manager.DEFAULT_OPTIONS);
+        manager = new Manager(new AndroidContext(getApplicationContext()), Manager.DEFAULT_OPTIONS);
         return manager;
     }
 
