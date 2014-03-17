@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 
     protected Manager startCBLite() throws IOException {
         Manager manager;
-        manager = new Manager(new AndroidContext(getApplicationContext()), Manager.DEFAULT_OPTIONS);
+        manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
         return manager;
     }
 
