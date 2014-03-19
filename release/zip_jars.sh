@@ -2,7 +2,7 @@
 
 THIS_DIR=`dirname $0`
 
-if [[ ! $1 ]] ; then echo "usage:  $0  build_number, like 1.0-1234" ; exit 99 ; fi
+if [[ ! $1 ]] ; then echo "usage:  $0  build_number, like 0.0.0-1234" ; exit 99 ; fi
 
 REVISION=$1
 
