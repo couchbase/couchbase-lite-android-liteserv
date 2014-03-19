@@ -6,5 +6,13 @@
     <localRepository>${env.LOCAL_M2_DIR}</localRepository>
     -->
     <localRepository>m2</localRepository>
-</settings>
+
+    <servers>
+        <server>
+            <id>couchbase.public.repo</id>
+            <username>${env.UPLOAD_USERNAME}</username>
+            <password>${env.UPLOAD_PASSWORD}</password>
+        </server>
+    </servers>
     
+</settings>
