@@ -28,7 +28,7 @@
         <LICENSE_DIR>${basedir}</LICENSE_DIR>
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
         
-        <TARGET_DIR>${basedir}/../cblite_android_${REVISION}</TARGET_DIR>
+        <TARGET_DIR>${basedir}/../libraries</TARGET_DIR>
         
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
     </properties>
@@ -138,11 +138,17 @@
                                  <!-- locally built  -->
                                  <echo message="DEBUG:::   locally built couchbase-lite JARs" />
 
-                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true" verbose="true">
-                                     <fileset dir="${TARGET_DIR}">
-                                         <include name="**/couchbase-lite-*.jar" />
-                                     </fileset>
-                                 </copy>
+                                 <copy preservelastmodified="true"  flatten="true"    tofile="${ZIP_HOME}/couchbase-lite-java-core-${REVISION}.jar"  
+                                                      file="libraries/couchbase-lite-java-core/build/libs/couchbase-lite-java-core.jar"              verbose="true" />
+
+                                 <copy preservelastmodified="true"  flatten="true"    tofile="${ZIP_HOME}/couchbase-lite-android-${REVISION}.jar"  
+                                                      file="libraries/couchbase-lite-android/build/bundles/release/classes.jar"                      verbose="true" />
+
+                                 <copy preservelastmodified="true"  flatten="true"    tofile="${ZIP_HOME}/couchbase-lite-java-javascript-${REVISION}.jar"  
+                                                      file="libraries/couchbase-lite-java-javascript/build/libs/couchbase-lite-java-javascript.jar"  verbose="true" />
+
+                                 <copy preservelastmodified="true"  flatten="true"    tofile="${ZIP_HOME}/couchbase-lite-java-listener-${REVISION}.jar"  
+                                                      file="libraries/couchbase-lite-java-listener/build/libs/couchbase-lite-java-listener.jar"      verbose="true" />
                                  
                                  <!-- third-party    -->
                                  <echo message="DEBUG:::   third-party" />
