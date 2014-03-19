@@ -126,24 +126,28 @@
                         </goals>
                         <configuration>
                             <tasks>
+                                 <echo message="DEBUG:::   LICENSE.txt" />
+
                                  <mkdir  dir="${ZIP_HOME}" />
-                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true">
+                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true" verbose="true">
                                      <fileset dir="${LICENSE_DIR}">
                                          <include name="${LICENSE_FILE}"                              />
                                      </fileset>
                                  </copy>
                                  
                                  <!-- locally built  -->
-                                 
-                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true">
+                                 <echo message="DEBUG:::   locally built couchbase-lite JARs" />
+
+                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true" verbose="true">
                                      <fileset dir="${TARGET_DIR}">
                                          <include name="**/couchbase-lite-*.jar" />
                                      </fileset>
                                  </copy>
                                  
                                  <!-- third-party    -->
+                                 <echo message="DEBUG:::   third-party" />
                                  
-                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true">
+                                 <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true" verbose="true">
                                      <fileset dir="${local-m2dir}">
                                          <include name="**/rhino-${rhino.version}.jar"                />
                                          <include name="**/commons-io-${commons-io.version}.jar"      />
