@@ -13,22 +13,22 @@
         </file>
                                  <!-- locally built  -->
         <file>
-            <source> ${ZIP_HOME}/coucbase-lite-android-${REVISION}.jar         </source>
+            <source> ${JAR_DST_JAVA_CORE} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${ZIP_HOME}/coucbase-lite-java-core-${REVISION}.jar       </source>
+            <source> ${JAR_DST_AND_CLASS} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${ZIP_HOME}/coucbase-lite-java-javascript-${REVISION}.jar </source>
+            <source> ${JAR_DST_JA_SCRIPT} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${ZIP_HOME}/coucbase-lite-java-listener-${REVISION}.jar   </source>
+            <source> ${JAR_DST_JLISTENER} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
