@@ -2,14 +2,19 @@
 
 THIS_DIR=`dirname $0`
 
-if [[ ! $1 ]] ; then echo "usage:  $0  build_number, like 0.0.0-1234" ; exit 99 ; fi
+if [[ ! $1 ]] ; then echo "usage:  $0  build_number (e.g. 0.0.0-1234)   [ log_file ]" ; exit 99 ; fi
+
+LOG='2>&1 | egrep -v '\'\('[0-9]+/[0-9]+K ?'\)\''+'
+
+if [[   $2 ]] ; then  LOG=${LOG}' >> '${2} ; fi
+
 
 REVISION=$1
 
 pushd ${THIS_DIR}  2>&1 > /dev/null
 
-  mvn --settings ./settings.xml --quiet -DREVISION=${REVISION} clean package
-# mvn --settings ./settings.xml   -X    -DREVISION=${REVISION} clean package
+  echo mvn --settings ./settings.xml --quiet -DREVISION=${REVISION} clean package  $LOG | bash
+# echo mvn --settings ./settings.xml   -X    -DREVISION=${REVISION} clean package  $LOG | bash
 
 popd               2>&1 > /dev/null
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ done making android_zipfile
