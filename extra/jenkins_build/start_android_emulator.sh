@@ -12,4 +12,5 @@ die () {
 [ "$#" -ge 1 ] || die "at least 1 argument required"
 
 # start emulator
+adb shell setprop debug.assert 1
 emulator64-arm -avd $* -netspeed full -netdelay none
