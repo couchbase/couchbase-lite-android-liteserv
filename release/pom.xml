@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>com.couchbase</groupId>
-    <artifactId>com.couchbase.cblite</artifactId>
+    <artifactId>com.couchbase.lite</artifactId>
     <version>0.0.0</version>
     <packaging>jar</packaging>
     
