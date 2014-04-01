@@ -58,25 +58,25 @@
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-android</artifactId>
             <version>${REVISION}</version>
-            <scope>install</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-java-core</artifactId>
             <version>${REVISION}</version>
-            <scope>install</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-java-javascript</artifactId>
             <version>${REVISION}</version>
-            <scope>install</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-java-listener</artifactId>
             <version>${REVISION}</version>
-            <scope>install</scope>
+            <scope>compile</scope>
         </dependency>
         
         <dependency>
