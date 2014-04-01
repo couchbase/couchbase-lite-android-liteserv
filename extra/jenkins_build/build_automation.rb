@@ -6,13 +6,13 @@ def uploadArchives()
   uploadArchivesSingleLibrary("libraries:couchbase-lite-java-core",       "build",    "")
   
   puts ".................................couchbase-lite-android"
-  uploadArchivesSingleLibrary("libraries:couchbase-lite-android",         "build",    "")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-android",         "build",    "buildAndroidWithArtifacts")
   
   puts ".................................couchbase-lite-java-javascript"
-  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-javascript", "assemble", "")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-javascript", "assemble", "buildJavascriptWithArtifacts")
   
   puts ".................................couchbase-lite-java-listener"
-  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-listener",   "assemble", "")
+  uploadArchivesSingleLibrary("libraries:couchbase-lite-java-listener",   "assemble", "buildListenerWithArtifacts")
 
 end
 
