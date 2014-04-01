@@ -11,6 +11,5 @@ verifyEnvVariable("MAVEN_UPLOAD_USERNAME")
 verifyEnvVariable("MAVEN_UPLOAD_PASSWORD")
 verifyEnvVariable("MAVEN_UPLOAD_REPO_URL")
 
-clean()
 uploadArchives()
 
