@@ -2,9 +2,16 @@
 require 'fileutils'
 
 def uploadArchives() 
+  puts ".................................couchbase-lite-java-core"
   uploadArchivesSingleLibrary("libraries:couchbase-lite-java-core",       "build",    "")
+  
+  puts ".................................couchbase-lite-android""
   uploadArchivesSingleLibrary("libraries:couchbase-lite-android",         "build",    "buildAndroidWithArtifacts")
+  
+  puts ".................................couchbase-lite-java-javascript
   uploadArchivesSingleLibrary("libraries:couchbase-lite-java-javascript", "assemble", "buildJavascriptWithArtifacts")
+  
+  puts ".................................couchbase-lite-java-listener
   uploadArchivesSingleLibrary("libraries:couchbase-lite-java-listener",   "assemble", "buildListenerWithArtifacts")
 
 end
@@ -12,13 +19,18 @@ end
 # upload the archives for a single library,
 def uploadArchivesSingleLibrary(libraryName, buildCommand, systemProperty)
   
-  cmd = "./gradlew :#{libraryName}:#{buildCommand}"
+  cmd = "./gradlew :#{libraryName}:#{buildCommand} --debug"
   cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
+  puts "-------------------------------------------------------"
+  puts cmd
   runCommandCheckError cmd
-
-  cmd = "./gradlew :#{libraryName}:uploadArchivesWrapper"
+  
+  cmd = "./gradlew :#{libraryName}:uploadArchivesWrapper --debug"
   cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
+  puts "-------------------------------------------------------"
+  puts cmd
   runCommandCheckError cmd
+  puts "-------------------------------------------------------"
 
 end 
 
