@@ -1,1 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+usePlugin 'maven'
+
+def localMavenRepo = System.getProperty('MAVEN_LOCAL_REPO') == null ?
+                     'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath :
+                     'file://' + System.getProperty('MAVEN_LOCAL_REPO')
+
+repositories {
+    maven { url localMavenRepo }
+    mavenLocal()
+}

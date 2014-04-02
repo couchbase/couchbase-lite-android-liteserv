@@ -31,10 +31,10 @@
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
-        <JAR_JAVA_CORE> java-core-${REVISION}.jar              </JAR_JAVA_CORE>
-        <JAR_AND_CLASS> android-${REVISION}.jar                  </JAR_AND_CLASS>
+        <JAR_JAVA_CORE> java-core-${REVISION}.jar        </JAR_JAVA_CORE>
+        <JAR_AND_CLASS> android-${REVISION}.jar          </JAR_AND_CLASS>
         <JAR_JA_SCRIPT> java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
-        <JAR_JLISTENER> java-listener-${REVISION}.jar      </JAR_JLISTENER>
+        <JAR_JLISTENER> java-listener-${REVISION}.jar    </JAR_JLISTENER>
         
         <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE> 
         <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/${JAR_AND_CLASS}          </JAR_SRC_AND_CLASS>
