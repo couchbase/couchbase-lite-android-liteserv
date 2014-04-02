@@ -31,15 +31,15 @@
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
-        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/java-core-${REVISION}.jar              </JAR_SRC_JAVA_CORE>
-        <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/android-${REVISION}.jar                  </JAR_SRC_AND_CLASS>
-        <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/java-javascript-${REVISION}.jar  </JAR_SRC_JA_SCRIPT>
-        <JAR_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/java-listener-${REVISION}.jar      </JAR_SRC_JLISTENER>
+        <JAR_JAVA_CORE> java-core-${REVISION}.jar              </JAR_JAVA_CORE>
+        <JAR_AND_CLASS> android-${REVISION}.jar                  </JAR_AND_CLASS>
+        <JAR_JA_SCRIPT> java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
+        <JAR_JLISTENER> java-listener-${REVISION}.jar      </JAR_JLISTENER>
         
-        <JAR_DST_JAVA_CORE> ${ZIP_HOME}/java-core-${REVISION}.jar        </JAR_DST_JAVA_CORE> 
-        <JAR_DST_AND_CLASS> ${ZIP_HOME}/android-${REVISION}.jar          </JAR_DST_AND_CLASS>
-        <JAR_DST_JA_SCRIPT> ${ZIP_HOME}/java-javascript-${REVISION}.jar  </JAR_DST_JA_SCRIPT> 
-        <JAR_DST_JLISTENER> ${ZIP_HOME}/java-listener-${REVISION}.jar    </JAR_DST_JLISTENER>
+        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE> 
+        <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/${JAR_AND_CLASS}          </JAR_SRC_AND_CLASS>
+        <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/${JAR_JA_SCRIPT}  </JAR_SRC_JA_SCRIPT> 
+        <JAR_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/${JAR_JLISTENER}    </JAR_SRC_JLISTENER>
         
         <POM_JAVA_CORE> java-core-${REVISION}.pom        </POM_JAVA_CORE>
         <POM_AND_CLASS> android-${REVISION}.pom          </POM_AND_CLASS>
@@ -182,15 +182,15 @@
                                  <!-- locally built  -->
                                  <echo message="DEBUG:::   locally built couchbase-lite JARs" />
                                  
-                                 <copy file="${JAR_SRC_JAVA_CORE}" tofile="${JAR_DST_JAVA_CORE}"  preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${JAR_SRC_AND_CLASS}" tofile="${JAR_DST_AND_CLASS}"  preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${JAR_SRC_JA_SCRIPT}" tofile="${JAR_DST_JA_SCRIPT}"  preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${JAR_SRC_JLISTENER}" tofile="${JAR_DST_JLISTENER}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
-                                 <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"            preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${POM_SRC_AND_CLASS}" todir="${ZIP_HOME}"            preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${POM_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"            preservelastmodified="true" flatten="true" verbose="true" />
-                                 <copy file="${POM_SRC_JLISTENER}" todir="${ZIP_HOME}"            preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${POM_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${POM_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${POM_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
                                  <!-- third-party    -->
                                  <echo message="DEBUG:::   third-party" />

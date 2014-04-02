@@ -13,22 +13,22 @@
         </file>
                                  <!-- locally built  -->
         <file>
-            <source> ${JAR_DST_JAVA_CORE} </source>
+            <source> ${ZIP_HOME}/${JAR_JAVA_CORE} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${JAR_DST_AND_CLASS} </source>
+            <source> ${ZIP_HOME}/${JAR_AND_CLASS} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${JAR_DST_JA_SCRIPT} </source>
+            <source> ${ZIP_HOME}/${JAR_JA_SCRIPT} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
         <file>
-            <source> ${JAR_DST_JLISTENER} </source>
+            <source> ${ZIP_HOME}/${JAR_JLISTENER} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </file>
