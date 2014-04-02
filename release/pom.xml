@@ -29,6 +29,7 @@
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
         
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
+        <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
         <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/java-core-${REVISION}.jar              </JAR_SRC_JAVA_CORE>
         <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/android-${REVISION}.jar                  </JAR_SRC_AND_CLASS>
@@ -39,8 +40,6 @@
         <JAR_DST_AND_CLASS> ${ZIP_HOME}/android-${REVISION}.jar          </JAR_DST_AND_CLASS>
         <JAR_DST_JA_SCRIPT> ${ZIP_HOME}/java-javascript-${REVISION}.jar  </JAR_DST_JA_SCRIPT> 
         <JAR_DST_JLISTENER> ${ZIP_HOME}/java-listener-${REVISION}.jar    </JAR_DST_JLISTENER>
-        
-        <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
         <POM_JAVA_CORE> java-core-${REVISION}.pom        </POM_JAVA_CORE>
         <POM_AND_CLASS> android-${REVISION}.pom          </POM_AND_CLASS>

@@ -19,13 +19,13 @@ end
 # upload the archives for a single library,
 def uploadArchivesSingleLibrary(libraryName, buildCommand, systemProperty)
   
-  cmd = "./gradlew :#{libraryName}:#{buildCommand} --debug"
+  cmd = "./gradlew :#{libraryName}:#{buildCommand}"
   cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
   puts "-------------------------------------------------------"
   puts cmd
   runCommandCheckError cmd
   
-  cmd = "./gradlew :#{libraryName}:uploadArchivesWrapper --debug"
+  cmd = "./gradlew :#{libraryName}:uploadArchivesWrapper"
   cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
   puts "-------------------------------------------------------"
   puts cmd
