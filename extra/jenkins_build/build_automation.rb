@@ -62,7 +62,14 @@ def build()
   puts "Building ..."
   build_result = buildCode()
   puts "Build result: #{build_result}"
-
+  
+  cmd = "./gradlew install"
+  cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
+  puts "-------------------------------------------------------"
+  puts cmd
+  runCommandCheckError cmd
+  puts "-------------------------------------------------------"
+  
 end
 
 def assertPresentInCurrentDirectory(file_list) 
