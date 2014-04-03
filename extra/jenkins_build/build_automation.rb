@@ -59,10 +59,9 @@ def build()
   assertPresentInCurrentDirectory(["settings.gradle"])
 
   # build the code
-  puts "Building .."
+  puts "Building ..."
   build_result = buildCode()
   puts "Build result: #{build_result}"
-
 
 end
 

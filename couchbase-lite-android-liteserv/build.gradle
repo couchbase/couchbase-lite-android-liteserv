@@ -24,19 +24,19 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile buildLiteServWithArtifacts == null ?
+    install buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-java-core') :
             'com.couchbase.lite:java-core:' + System.getenv("MAVEN_UPLOAD_VERSION")
 
-    compile buildLiteServWithArtifacts == null ?
+    install buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-android') :
             'com.couchbase.lite:android:' + System.getenv("MAVEN_UPLOAD_VERSION")
 
-    compile buildLiteServWithArtifacts == null ?
+    install buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-java-javascript') :
             'com.couchbase.lite:java-javascript:' + System.getenv("MAVEN_UPLOAD_VERSION")
 
-    compile buildLiteServWithArtifacts == null ?
+    install buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-java-listener') :
             'com.couchbase.lite:java-listener:' + System.getenv("MAVEN_UPLOAD_VERSION")
 
