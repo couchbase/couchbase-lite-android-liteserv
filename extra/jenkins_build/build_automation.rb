@@ -64,7 +64,6 @@ def build()
   puts "Build result: #{build_result}"
   
   cmd = "./gradlew install"
-  cmd = "#{cmd} -D#{systemProperty}" if !systemProperty.empty?
   puts "-------------------------------------------------------"
   puts cmd
   runCommandCheckError cmd
