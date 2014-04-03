@@ -9,13 +9,6 @@
     <version>${REVISION}</version>
     <packaging>jar</packaging>
     
-    <repositories>
-        <repository>
-            <id>couchbase.public.repo</id>
-            <url>http://files.couchbase.com/maven2</url>
-        </repository>
-    </repositories>
-    
     <properties>
         <local-m2dir>${basedir}/m2</local-m2dir>
         
@@ -51,6 +44,17 @@
         <POM_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/${POM_JA_SCRIPT}  </POM_SRC_JA_SCRIPT>
         <POM_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/${POM_JLISTENER}    </POM_SRC_JLISTENER>
     </properties>
+    
+    <repositories>
+        <repository>
+            <id>couchbase.public.repo</id>
+            <url>http://files.couchbase.com/maven2</url>
+        </repository>
+        <repository>
+            <id>couchbase.local.repo</id>
+            <url>file://${local-m2dir}</url>
+        </repository>
+    </repositories>
     
     <dependencies>
         <dependency>
