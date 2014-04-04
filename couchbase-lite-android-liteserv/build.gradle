@@ -11,9 +11,8 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
-    maven {
-        url "http://files.couchbase.com/maven2/"
-    }
+    maven { url couchbaseMavenRepo }
+    maven { url localMavenRepo     }
 }
 
 def buildLiteServWithArtifacts = System.getProperty("buildLiteServWithArtifacts")
