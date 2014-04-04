@@ -1,19 +1,11 @@
 
 buildscript {
-    repositories {
-        mavenCentral()
-    }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.8.+'
     }
 }
 apply plugin: 'android'
 
-repositories {
-    mavenCentral()
-    maven { url couchbaseMavenRepo }
-    maven { url localMavenRepo     }
-}
 
 def buildLiteServWithArtifacts = System.getProperty("buildLiteServWithArtifacts")
 
