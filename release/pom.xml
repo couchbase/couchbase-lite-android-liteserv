@@ -58,25 +58,25 @@
     
     <dependencies>
         <dependency>
-            <groupId>lite</groupId>
+            <groupId>com.couchbase.lite</groupId>
             <artifactId>android</artifactId>
             <version>${REVISION}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>lite</groupId>
+            <groupId>com.couchbase.lite</groupId>
             <artifactId>java-core</artifactId>
             <version>${REVISION}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>lite</groupId>
+            <groupId>com.couchbase.lite</groupId>
             <artifactId>java-javascript</artifactId>
             <version>${REVISION}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>lite</groupId>
+            <groupId>com.couchbase.lite</groupId>
             <artifactId>java-listener</artifactId>
             <version>${REVISION}</version>
             <scope>compile</scope>
