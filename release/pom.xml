@@ -48,7 +48,7 @@
     <repositories>
         <repository>
             <id>couchbase.public.repo</id>
-            <url>http://files.couchbase.com/maven2</url>
+            <url>http://files.couchbase.com/maven2/com/couchbase</url>
         </repository>
         <repository>
             <id>couchbase.local.repo</id>
