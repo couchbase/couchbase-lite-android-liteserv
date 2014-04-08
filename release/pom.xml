@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>com.couchbase</groupId>
-    <artifactId>lite</artifactId>
+    <artifactId>couchbase-lite</artifactId>
     <version>${REVISION}</version>
     <packaging>jar</packaging>
     
@@ -21,11 +21,11 @@
         <LICENSE_DIR>${basedir}</LICENSE_DIR>
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
         
-        <TARGET_DIR>${local-m2dir}/lite</TARGET_DIR>
+        <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
         <JAR_JAVA_CORE> java-core-${REVISION}.jar        </JAR_JAVA_CORE>
-        <JAR_AND_CLASS> android-${REVISION}.jar          </JAR_AND_CLASS>
+        <JAR_AND_CLASS> android-${REVISION}.aar          </JAR_AND_CLASS>
         <JAR_JA_SCRIPT> java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
         <JAR_JLISTENER> java-listener-${REVISION}.jar    </JAR_JLISTENER>
         
@@ -60,6 +60,7 @@
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>android</artifactId>
+            <type>aar</type>
             <version>${REVISION}</version>
             <scope>compile</scope>
         </dependency>
