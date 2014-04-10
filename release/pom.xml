@@ -16,7 +16,6 @@
         <commons-io.version>  2.0.1 </commons-io.version>
         <rhino.version>       1.7R3 </rhino.version>
         <servlet.version>     2-3   </servlet.version>
-        <td_collator.version> 1.0   </td_collator.version>
         
         <LICENSE_DIR>${basedir}</LICENSE_DIR>
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
@@ -24,23 +23,23 @@
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
         <ZIP_HOME>${basedir}/staging</ZIP_HOME>
         
-        <JAR_JAVA_CORE> java-core-${REVISION}.jar        </JAR_JAVA_CORE>
         <JAR_AND_CLASS> android-${REVISION}.aar          </JAR_AND_CLASS>
+        <JAR_JAVA_CORE> java-core-${REVISION}.jar        </JAR_JAVA_CORE>
         <JAR_JA_SCRIPT> java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
         <JAR_JLISTENER> java-listener-${REVISION}.jar    </JAR_JLISTENER>
         
-        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE> 
         <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/${JAR_AND_CLASS}          </JAR_SRC_AND_CLASS>
+        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE> 
         <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/${JAR_JA_SCRIPT}  </JAR_SRC_JA_SCRIPT> 
         <JAR_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/${JAR_JLISTENER}    </JAR_SRC_JLISTENER>
         
-        <POM_JAVA_CORE> java-core-${REVISION}.pom        </POM_JAVA_CORE>
         <POM_AND_CLASS> android-${REVISION}.pom          </POM_AND_CLASS>
+        <POM_JAVA_CORE> java-core-${REVISION}.pom        </POM_JAVA_CORE>
         <POM_JA_SCRIPT> java-javascript-${REVISION}.pom  </POM_JA_SCRIPT>
         <POM_JLISTENER> java-listener-${REVISION}.pom    </POM_JLISTENER>
         
-        <POM_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${POM_JAVA_CORE}        </POM_SRC_JAVA_CORE>
         <POM_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/${POM_AND_CLASS}          </POM_SRC_AND_CLASS>
+        <POM_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${POM_JAVA_CORE}        </POM_SRC_JAVA_CORE>
         <POM_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/${POM_JA_SCRIPT}  </POM_SRC_JA_SCRIPT>
         <POM_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/${POM_JLISTENER}    </POM_SRC_JLISTENER>
     </properties>
@@ -124,13 +123,6 @@
             <version>${servlet.version}</version>
             <scope>compile</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>com.couchbase.cblite</groupId>
-            <artifactId>td_collator_so</artifactId>
-            <version>${td_collator.version}</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
     
     <build>
@@ -187,13 +179,13 @@
                                  <!-- locally built  -->
                                  <echo message="DEBUG:::   locally built couchbase-lite JARs" />
                                  
-                                 <copy file="${JAR_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
-                                 <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
@@ -208,7 +200,6 @@
                                          <include name="**/jackson-mapper-asl-${jackson.version}.jar" />
                                          
                                          <include name="**/servlet-${servlet.version}.jar"            />
-                                         <include name="**/td_collator_so-${td_collator.version}.jar" />
                                          <include name="**/webserver-${servlet.version}.jar"          />
                                      </fileset>
                                  </copy>
