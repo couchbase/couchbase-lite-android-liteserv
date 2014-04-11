@@ -21,17 +21,28 @@
         <LICENSE_FILE>LICENSE.txt</LICENSE_FILE>
         
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
-        <ZIP_HOME>${basedir}/staging</ZIP_HOME>
+        <ZIP_HOME>${basedir}/zip</ZIP_HOME>
         
-        <JAR_AND_CLASS> android-${REVISION}.aar          </JAR_AND_CLASS>
+        <AND_CLASS_AAR> android-${REVISION}.aar          </AND_CLASS_AAR>
         <JAR_JAVA_CORE> java-core-${REVISION}.jar        </JAR_JAVA_CORE>
         <JAR_JA_SCRIPT> java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
         <JAR_JLISTENER> java-listener-${REVISION}.jar    </JAR_JLISTENER>
         
-        <JAR_SRC_AND_CLASS> ${TARGET_DIR}/android/${REVISION}/${JAR_AND_CLASS}          </JAR_SRC_AND_CLASS>
+        <AND_CLASS_AAR_SRC> ${TARGET_DIR}/android/${REVISION}/${AND_CLASS_AAR}          </AND_CLASS_AAR_SRC>
         <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE> 
         <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/java-javascript/${REVISION}/${JAR_JA_SCRIPT}  </JAR_SRC_JA_SCRIPT> 
         <JAR_SRC_JLISTENER> ${TARGET_DIR}/java-listener/${REVISION}/${JAR_JLISTENER}    </JAR_SRC_JLISTENER>
+       
+        <STAGING>${basedir}/staging</STAGING> 
+        <JNI_SRC_DIR>${basedir}/../libraries/couchbase-lite-android/jniLibs</JNI_SRC_DIR> 
+        <JNI_DST_DIR>${STAGING}/lib</JNI_DST_DIR>
+        
+        <JAR_AND_CLASS> android-${REVISION}.jar          </JAR_AND_CLASS>
+        <JAR_SRC_AND_CLASS> ${basedir}/../libraries/couchbase-lite-android/build/bundles/release/classes.jar </JAR_SRC_AND_CLASS>
+        <JAR_DST_AND_CLASS> ${STAGING}/${JAR_AND_CLASS}                                                      </JAR_DST_AND_CLASS>
+
+        <JAR_COLLATORS> cbl_collator_so-${REVISION}.jar  </JAR_COLLATORS>
+        <JAR_SRC_COLLATORS> ${STAGING}/${JAR_COLLATORS}  </JAR_SRC_COLLATORS>
         
         <POM_AND_CLASS> android-${REVISION}.pom          </POM_AND_CLASS>
         <POM_JAVA_CORE> java-core-${REVISION}.pom        </POM_JAVA_CORE>
@@ -148,13 +159,71 @@
                     
                     <execution>
                         <phase>clean</phase>
-                        <id>clean_m2</id>
+                        <id>clean_derived</id>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <tasks>
-                                <delete dir="${ZIP_HOME}" failonerror="true" verbose="true" />
+                                <delete dir="${STAGING}"     failonerror="true" verbose="true" />
+                                <delete dir="${JNI_DST_DIR}" failonerror="true" verbose="true" />
+                                <delete dir="${ZIP_HOME}"    failonerror="true" verbose="true" />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>clean</phase>
+                        <id>clean_jars</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <delete file="${JAR_DST_AND_CLASS}"  failonerror="true" verbose="true" />
+                                <delete file="${JAR_SRC_COLLATORS}"  failonerror="true" verbose="true" />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <phase>init</phase>
+                        <id>creat_dirs</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir  dir="${ZIP_HOME}"    />
+                                <mkdir  dir="${JNI_DST_DIR}" />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <id>create_collator_jar</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                 <echo message="DEBUG:::   CREATE collator JAR" />
+                                 <copy todir="${JNI_DST_DIR}"  flatten="false"> <fileset dir="${JNI_SRC_DIR}" /> </copy>
+                                 <jar destfile="${JAR_SRC_COLLATORS}"  basedir="${JNI_DST_DIR}" />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <id>create_android_jar</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                 <echo message="DEBUG:::   CREATE collator JAR" />
+                                 <copy file="${JAR_SRC_AND_CLASS}" tofile="${JAR_DST_AND_CLASS}" />
                             </tasks>
                         </configuration>
                     </execution>
@@ -169,7 +238,6 @@
                             <tasks>
                                  <echo message="DEBUG:::   LICENSE.txt" />
 
-                                 <mkdir  dir="${ZIP_HOME}" />
                                  <copy todir="${ZIP_HOME}" preservelastmodified="true" flatten="true" verbose="true">
                                      <fileset dir="${LICENSE_DIR}">
                                          <include name="${LICENSE_FILE}"                              />
@@ -179,7 +247,9 @@
                                  <!-- locally built  -->
                                  <echo message="DEBUG:::   locally built couchbase-lite JARs" />
                                  
+                                 <copy file="${AND_CLASS_AAR_SRC}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 
                                  <copy file="${JAR_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
@@ -188,6 +258,12 @@
                                  <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 
+                                 <!-- locally packaged  -->
+                                 <echo message="DEBUG:::   locally packaged android JARs" />
+                                 
+                                 <copy file="${JAR_DST_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
+                                 <copy file="${JAR_SRC_COLLATORS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
                                  <!-- third-party    -->
                                  <echo message="DEBUG:::   third-party" />
