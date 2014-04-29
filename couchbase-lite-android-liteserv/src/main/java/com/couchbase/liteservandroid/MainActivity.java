@@ -12,7 +12,9 @@ import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
 import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
+import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.listener.LiteListener;
+import com.couchbase.lite.listener.LiteServlet;
 
 import java.io.IOException;
 
@@ -22,6 +24,7 @@ public class MainActivity extends Activity {
     private static final String DATABASE_NAME = "cblite-test";
     private static final String LISTEN_PORT_PARAM_NAME = "listen_port";
     public static String TAG = "LiteServ";
+    private Credentials allowedCredentials;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends Activity {
         try {
             int port = startCBLListener(getListenPort());
             showListenPort(port);
+            showListenCredentials();
         } catch (Exception e) {
             TextView listenPortTextView = (TextView)findViewById(R.id.listen_port_textview);
             listenPortTextView.setText(String.format("Error starting LiteServ"));
@@ -48,12 +52,27 @@ public class MainActivity extends Activity {
         listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s", listenPort, DATABASE_NAME));
     }
 
+    private void showListenCredentials() {
+        TextView listenCredentialsTextView = (TextView)findViewById(R.id.listen_credentials_textview);
+        String credentialsDisplay = String.format(
+                "login: %s password: %s",
+                allowedCredentials.getLogin(),
+                allowedCredentials.getPassword()
+        );
+        Log.v(TAG, credentialsDisplay);
+        listenCredentialsTextView.setText(credentialsDisplay);
+
+    }
+
     private int startCBLListener(int suggestedListenPort) throws IOException, CouchbaseLiteException {
 
         Manager manager = startCBLite();
         startDatabase(manager, DATABASE_NAME);
 
-        LiteListener listener = new LiteListener(manager, suggestedListenPort);
+        allowedCredentials = new Credentials();
+
+        LiteListener listener = new LiteListener(manager, suggestedListenPort, allowedCredentials);
+
         int port = listener.getListenPort();
         Thread thread = new Thread(listener);
         thread.start();
