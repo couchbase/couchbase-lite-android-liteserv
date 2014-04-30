@@ -209,7 +209,7 @@
                             <tasks>
                                  <echo message="DEBUG:::   CREATE collator JAR" />
                                  <copy todir="${JNI_DST_DIR}"  flatten="false"> <fileset dir="${JNI_SRC_DIR}" /> </copy>
-                                 <jar destfile="${JAR_SRC_COLLATORS}"  basedir="${JNI_DST_DIR}" />
+                                 <jar destfile="${JAR_SRC_COLLATORS}"  basedir="${STAGING}" />
                             </tasks>
                         </configuration>
                     </execution>
