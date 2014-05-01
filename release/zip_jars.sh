@@ -13,8 +13,8 @@ REVISION=$1
 
 pushd ${THIS_DIR}  2>&1 > /dev/null
 
-  echo mvn --settings ./settings.xml --quiet -DREVISION=${REVISION} clean prepare-package package  $LOG | bash
-# echo mvn --settings ./settings.xml --debug -DREVISION=${REVISION} clean prepare-package package  $LOG | bash
+# echo mvn --settings ./settings.xml --quiet -DREVISION=${REVISION} clean prepare-package package  $LOG | bash
+  echo mvn --settings ./settings.xml --debug -DREVISION=${REVISION} clean prepare-package package  $LOG | bash
 
 popd               2>&1 > /dev/null
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ done making android_zipfile

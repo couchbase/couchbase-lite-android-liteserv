@@ -222,7 +222,7 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                 <echo message="DEBUG:::   CREATE collator JAR" />
+                                 <echo message="DEBUG:::   CREATE Android JAR"  />
                                  <copy file="${JAR_SRC_AND_CLASS}" tofile="${JAR_DST_AND_CLASS}" />
                             </tasks>
                         </configuration>
