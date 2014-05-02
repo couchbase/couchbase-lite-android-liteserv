@@ -26,6 +26,8 @@ die () {
 
 # launch activity
 adb shell am start -a android.intent.action.MAIN -n com.couchbase.liteservandroid/com.couchbase.liteservandroid.MainActivity --ei listen_port $*
+# to disable the basic auth(for functional tests)
+# adb shell am start -a android.intent.action.MAIN -n com.couchbase.liteservandroid/com.couchbase.liteservandroid.MainActivity --ei listen_port $* --es username "" --es password ""
 
 # port mapping (only listens on localhost, unavailable from other machines on network)
 adb forward tcp:$* tcp:$*
