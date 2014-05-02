@@ -166,7 +166,6 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <delete dir="${STAGING}"          failonerror="true" verbose="true" />
                                 <delete dir="${COLLATOR_STAGING}" failonerror="true" verbose="true" />
                                 <delete dir="${JNI_DST_DIR}"      failonerror="true" verbose="true" />
                                 <delete dir="${ZIP_HOME}"         failonerror="true" verbose="true" />
@@ -188,13 +187,14 @@
                     </execution>
                     
                     <execution>
-                        <phase>init</phase>
+                        <phase>initialize</phase>
                         <id>creat_dirs</id>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <tasks>
+                                <mkdir  dir="${STAGING}"          />
                                 <mkdir  dir="${COLLATOR_STAGING}" />
                                 <mkdir  dir="${JNI_DST_DIR}"      />
                                 <mkdir  dir="${ZIP_HOME}"         />
