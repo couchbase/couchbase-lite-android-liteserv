@@ -23,6 +23,10 @@ public class MainActivity extends Activity {
     private static final int DEFAULT_LISTEN_PORT = 5984;
     private static final String DATABASE_NAME = "cblite-test";
     private static final String LISTEN_PORT_PARAM_NAME = "listen_port";
+
+    private static final String LISTEN_LOGIN_PARAM_NAME = "username";
+    private static final String LISTEN_PASSWORD_PARAM_NAME = "password";
+
     public static String TAG = "LiteServ";
     private Credentials allowedCredentials;
 
@@ -69,7 +73,12 @@ public class MainActivity extends Activity {
         Manager manager = startCBLite();
         startDatabase(manager, DATABASE_NAME);
 
-        allowedCredentials = new Credentials();
+
+        if (getLogin()!=null && getPassword()!=null){
+            allowedCredentials = new Credentials(getLogin(), getPassword());
+        } else{
+            allowedCredentials = new Credentials();
+        }
 
         LiteListener listener = new LiteListener(manager, suggestedListenPort, allowedCredentials);
 
@@ -95,6 +104,15 @@ public class MainActivity extends Activity {
     private int getListenPort() {
         return getIntent().getIntExtra(LISTEN_PORT_PARAM_NAME, DEFAULT_LISTEN_PORT);
     }
+
+    private String getLogin() {
+        return getIntent().getStringExtra(LISTEN_LOGIN_PARAM_NAME);
+    }
+
+    private String getPassword() {
+        return getIntent().getStringExtra(LISTEN_PASSWORD_PARAM_NAME);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
