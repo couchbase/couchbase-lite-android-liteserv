@@ -35,9 +35,9 @@
 
         <STAGING>${basedir}/staging</STAGING>
 
-        <JAR_AND_CLASS> couchbase-lite-android-${REVISION}.jar          </JAR_AND_CLASS>
-        <JAR_SRC_AND_CLASS> ${basedir}/../libraries/couchbase-lite-android/build/bundles/release/classes.jar </JAR_SRC_AND_CLASS>
-        <JAR_DST_AND_CLASS> ${STAGING}/${JAR_AND_CLASS}                                                      </JAR_DST_AND_CLASS>
+        <JAR_AND_CLASS> couchbase-lite-android-${REVISION}.jar                     </JAR_AND_CLASS>
+        <JAR_SRC_AND_CLASS> ${basedir}/../libraries/couchbase-lite-android/build/intermediates/bundles/release/classes.jar </JAR_SRC_AND_CLASS>
+        <JAR_DST_AND_CLASS> ${STAGING}/${JAR_AND_CLASS}                                                                    </JAR_DST_AND_CLASS>
 
 
         <JAR_COLLATORS>     cbl_collator_so-${REVISION}.jar                        </JAR_COLLATORS>
