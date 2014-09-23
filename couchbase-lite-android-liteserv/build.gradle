@@ -71,3 +71,42 @@ android {
     }
 
 }
+
+
+task createMavenDirectory(type: Exec) {
+
+    ext {
+        uploadUser = System.getenv("MAVEN_UPLOAD_USERNAME") + ":" + System.getenv("MAVEN_UPLOAD_PASSWORD")
+        mkcolPath  = System.getenv("MAVEN_UPLOAD_REPO_URL") + "com/couchbase/lite/couchbase-lite-java-listener/" + System.getenv("MAVEN_UPLOAD_VERSION") + "/"
+    }
+    commandLine "curl", "--user", uploadUser, "-X", "MKCOL", mkcolPath
+}
+
+// this hack is only needed for apache mod_dav based Maven repo's like file.couchbase.com.  otherwise, skip it
+createMavenDirectory.onlyIf { System.getenv("MAVEN_UPLOAD_REPO_URL").contains("files") }
+
+task uploadArchivesWrapper(dependsOn: createMavenDirectory) << {
+    uploadArchives.execute()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.getenv("MAVEN_UPLOAD_REPO_URL")) {
+                authentication(userName: System.getenv("MAVEN_UPLOAD_USERNAME"), password: System.getenv("MAVEN_UPLOAD_PASSWORD"))
+            }
+            pom.version = System.getenv("MAVEN_UPLOAD_VERSION")  
+            pom.groupId = 'com.couchbase.lite'
+            pom.artifactId = 'couchbase-lite-android-liteserv'
+            pom.project {
+                licenses {
+                    license {
+                        name 'Couchbase Community Edition License Agreement'
+                        url 'http://www.couchbase.com/agreement/community'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
