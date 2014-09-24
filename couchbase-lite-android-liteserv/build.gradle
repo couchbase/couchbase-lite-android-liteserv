@@ -77,7 +77,7 @@ task createMavenDirectory(type: Exec) {
 
     ext {
         uploadUser = System.getenv("MAVEN_UPLOAD_USERNAME") + ":" + System.getenv("MAVEN_UPLOAD_PASSWORD")
-        mkcolPath  = System.getenv("MAVEN_UPLOAD_REPO_URL") + "com/couchbase/lite/couchbase-lite-java-listener/" + System.getenv("MAVEN_UPLOAD_VERSION") + "/"
+        mkcolPath  = System.getenv("MAVEN_UPLOAD_REPO_URL") + "com/couchbase/lite/couchbase-lite-android-liteserv/" + System.getenv("MAVEN_UPLOAD_VERSION") + "/"
     }
     commandLine "curl", "--user", uploadUser, "-X", "MKCOL", mkcolPath
 }
