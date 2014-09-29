@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-android-liteserv</artifactId>
-            <type>aar</type>
+            <type>jar</type>
             <version>${REVISION}</version>
             <scope>compile</scope>
         </dependency>

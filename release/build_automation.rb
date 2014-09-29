@@ -16,7 +16,7 @@ def uploadArchives()
   uploadArchivesSingleLibrary("libraries:couchbase-lite-android",         "build",    "buildAndroidWithArtifacts")
   
   puts ".................................couchbase-lite-android-liteserv"
-  uploadArchivesSingleLibrary("couchbase-lite-android-liteserv:",          "build",    "buildAndroidWithArtifacts")
+  uploadArchivesSingleLibrary("couchbase-lite-android-liteserv:",         "assemble", "buildAndroidWithArtifacts")
 end
 
 # upload the archives for a single library,
