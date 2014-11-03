@@ -22,6 +22,12 @@ cd couchbase-lite-android-liteserv
 git submodule init && git submodule update
 ```
 
+## Configure Android Studio SDK location
+
+* `cp local.properties.example local.properties`
+* Customize `local.properties` according to your SDK installation directory
+
+
 ## Import Project into Android Studio
 
 **Note**: this project is known to work on Android Studio 0.4.3 and earlier 0.4.X versions, but is not working on Android Studio 0.4.4 or later due to this [Android Studio bug](https://code.google.com/p/android/issues/detail?id=65915)
