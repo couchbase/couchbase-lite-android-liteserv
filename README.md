@@ -61,7 +61,8 @@ Once the project is imported, just run the green arrow "play" button.
 
 * Call `$ ./run_android_liteserv.sh 8080` to run it on port 8080.  This should install the app into the emulator and launch it, and then setup a port forwarding rule so that 8080 on your workstation is mapped to port 8080 on the emulator.
 
-
+## NOTE
+- Android Studio & JDK 1.8.x & Mac OSX => Unable to build application because of webserver-2.-3.jar from http://files.couchbase.com/maven2/com/couchbase/cblite/webserver/2-3/ which is integrated in couchbase-lite-java-listner. **Use JDK 1.7.x** instead of JDK 1.8.x
 
 
 
