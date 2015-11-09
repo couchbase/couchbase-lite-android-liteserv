@@ -11,10 +11,10 @@ import com.couchbase.lite.Database;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
 import com.couchbase.lite.android.AndroidContext;
+import com.couchbase.lite.javascript.JavaScriptReplicationFilterCompiler;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
 import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.listener.LiteListener;
-import com.couchbase.lite.listener.LiteServlet;
 
 import java.io.IOException;
 
@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
 
         // Register the JavaScript view compiler
         View.setCompiler(new JavaScriptViewCompiler());
+        Database.setFilterCompiler(new JavaScriptReplicationFilterCompiler());
 
         try {
             int port = startCBLListener(getListenPort());
