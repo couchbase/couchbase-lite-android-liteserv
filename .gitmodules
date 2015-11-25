@@ -13,6 +13,3 @@
 [submodule "libraries/couchbase-lite-java-forestdb"]
 	path = libraries/couchbase-lite-java-forestdb
 	url = https://github.com/couchbaselabs/couchbase-lite-java-forestdb
-[submodule "libraries/couchbase-lite-java-sqlcipher"]
-	path = libraries/couchbase-lite-java-sqlcipher
-	url = https://github.com/couchbaselabs/couchbase-lite-java-sqlcipher
