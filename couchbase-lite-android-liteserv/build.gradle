@@ -52,8 +52,8 @@ dependencies {
             'com.couchbase.lite:couchbase-lite-java-listener:' + System.getenv("MAVEN_UPLOAD_VERSION")
 
     compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-native:sqlite-system') :
-            'com.couchbase.lite:couchbase-lite-java-native-sqlite-system' + System.getenv("MAVEN_UPLOAD_VERSION")
+            project(':libraries:couchbase-lite-java-native:sqlite-default') :
+            'com.couchbase.lite:couchbase-lite-android-sqlite-default' + System.getenv("MAVEN_UPLOAD_VERSION")
 }
 
 android {
