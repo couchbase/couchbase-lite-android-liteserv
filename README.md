@@ -19,7 +19,7 @@ It is useful for:
 ```
 git clone https://github.com/couchbaselabs/couchbase-lite-android-liteserv.git
 cd couchbase-lite-android-liteserv
-git submodule init && git submodule update
+git submodule update --init --recursive
 ```
 
 ## Import Project into Android Studio
