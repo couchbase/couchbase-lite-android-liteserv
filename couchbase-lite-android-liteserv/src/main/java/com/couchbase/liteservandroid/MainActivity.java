@@ -27,8 +27,14 @@ public class MainActivity extends Activity {
     private static final String LISTEN_LOGIN_PARAM_NAME = "username";
     private static final String LISTEN_PASSWORD_PARAM_NAME = "password";
 
+    private static final String STORAGE_TYPE_PARAM_NAME = "storage_type";
+    private static final String STORAGE_TYPE_FORESTDB = "ForestDB";
+    private static final String STORAGE_TYPE_SQLITE = "SQLite";
+
+
     public static String TAG = "LiteServ";
     private Credentials allowedCredentials;
+    private String storageType = STORAGE_TYPE_SQLITE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +54,12 @@ public class MainActivity extends Activity {
             listenPortTextView.setText(String.format("Error starting LiteServ"));
             Log.e(TAG, "Error starting LiteServ", e);
         }
-
     }
 
     private void showListenPort(int listenPort) {
         Log.d(TAG, "listenPort: " + listenPort);
         TextView listenPortTextView = (TextView)findViewById(R.id.listen_port_textview);
-        listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s", listenPort, DATABASE_NAME));
+        listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s Storage: %s", listenPort, DATABASE_NAME, storageType));
     }
 
     private void showListenCredentials() {
@@ -88,12 +93,18 @@ public class MainActivity extends Activity {
         thread.start();
 
         return port;
-
     }
 
     protected Manager startCBLite() throws IOException {
         Manager manager;
         manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
+        this.storageType = getStorageType();
+        if (storageType != null && storageType.compareToIgnoreCase(STORAGE_TYPE_FORESTDB) == 0)
+            this.storageType = Manager.FORESTDB_STORAGE;
+        else
+            this.storageType = Manager.SQLITE_STORAGE;
+        Log.i(TAG, "storageType: " + this.storageType);
+        manager.setStorageType(this.storageType);
         return manager;
     }
 
@@ -114,6 +125,9 @@ public class MainActivity extends Activity {
         return getIntent().getStringExtra(LISTEN_PASSWORD_PARAM_NAME);
     }
 
+    private String getStorageType() {
+        return getIntent().getStringExtra(STORAGE_TYPE_PARAM_NAME);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
