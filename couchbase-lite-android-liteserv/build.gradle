@@ -31,6 +31,12 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
+    compile 'com.couchbase.lite:couchbase-lite-android:0.0.0-545'
+    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:0.0.0-545'
+    compile 'com.couchbase.lite:couchbase-lite-java-javascript:0.0.0-545'
+    compile 'com.couchbase.lite:couchbase-lite-java-listener:0.0.0-545'
+
+    /*
     compile buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-java-core') :
             'com.couchbase.lite:couchbase-lite-java-core:' + System.getenv("MAVEN_UPLOAD_VERSION")
@@ -54,6 +60,7 @@ dependencies {
     compile buildLiteServWithArtifacts == null ?
             project(':libraries:couchbase-lite-java-native:sqlite-default') :
             'com.couchbase.lite:couchbase-lite-android-sqlite-default' + System.getenv("MAVEN_UPLOAD_VERSION")
+    */
 }
 
 android {

@@ -1,1 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "http://files.couchbase.com/maven2/"
+        }
+    }
+}
