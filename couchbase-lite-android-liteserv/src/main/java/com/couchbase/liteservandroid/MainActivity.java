@@ -11,7 +11,6 @@ import com.couchbase.lite.Database;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
 import com.couchbase.lite.android.AndroidContext;
-import com.couchbase.lite.javascript.JavaScriptReplicationFilterCompiler;
 import com.couchbase.lite.javascript.JavaScriptViewCompiler;
 import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.listener.LiteListener;
@@ -43,7 +42,6 @@ public class MainActivity extends Activity {
 
         // Register the JavaScript view compiler
         View.setCompiler(new JavaScriptViewCompiler());
-        Database.setFilterCompiler(new JavaScriptReplicationFilterCompiler());
 
         try {
             int port = startCBLListener(getListenPort());
@@ -96,16 +94,7 @@ public class MainActivity extends Activity {
     }
 
     protected Manager startCBLite() throws IOException {
-        Manager manager;
-        manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
-        this.storageType = getStorageType();
-        if (storageType != null && storageType.compareToIgnoreCase(STORAGE_TYPE_FORESTDB) == 0)
-            this.storageType = Manager.FORESTDB_STORAGE;
-        else
-            this.storageType = Manager.SQLITE_STORAGE;
-        Log.i(TAG, "storageType: " + this.storageType);
-        manager.setStorageType(this.storageType);
-        return manager;
+        return new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
     }
 
     protected void startDatabase(Manager manager, String databaseName) throws CouchbaseLiteException {
@@ -135,5 +124,4 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
 }
