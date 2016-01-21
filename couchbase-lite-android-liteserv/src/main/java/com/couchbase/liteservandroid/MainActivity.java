@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     public static String TAG = "LiteServ";
     private Credentials allowedCredentials;
 
-    private String storageType = "SQLCipher";
+    private String storageType = "ForestDB+Encryption";
 
     private static final String KEY_4_DATABASE = "Passw0rd";
 
@@ -96,6 +96,7 @@ public class MainActivity extends Activity {
     protected Manager startCBLite(String databaseName) throws IOException {
         Manager manager;
         manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
+        manager.setStorageType(Manager.FORESTDB_STORAGE);
         manager.registerEncryptionKey(KEY_4_DATABASE, databaseName);
         return manager;
     }
