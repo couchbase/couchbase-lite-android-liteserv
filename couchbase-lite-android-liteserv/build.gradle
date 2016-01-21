@@ -31,36 +31,10 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile 'com.couchbase.lite:couchbase-lite-android:1.2.0-6'
-    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:1.2.0-6'
-    compile 'com.couchbase.lite:couchbase-lite-java-javascript:1.2.0-6'
-    compile 'com.couchbase.lite:couchbase-lite-java-listener:1.2.0-6'
-
-    /*
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-core') :
-            'com.couchbase.lite:couchbase-lite-java-core:' + System.getenv("MAVEN_UPLOAD_VERSION")
-
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-forestdb') :
-            'com.couchbase.lite:couchbase-lite-java-forestdb:' + System.getenv("MAVEN_UPLOAD_VERSION")
-
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-android') :
-            'com.couchbase.lite:couchbase-lite-android:' + System.getenv("MAVEN_UPLOAD_VERSION")
-
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-javascript') :
-            'com.couchbase.lite:couchbase-lite-java-javascript:' + System.getenv("MAVEN_UPLOAD_VERSION")
-
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-listener') :
-            'com.couchbase.lite:couchbase-lite-java-listener:' + System.getenv("MAVEN_UPLOAD_VERSION")
-
-    compile buildLiteServWithArtifacts == null ?
-            project(':libraries:couchbase-lite-java-native:sqlite-default') :
-            'com.couchbase.lite:couchbase-lite-android-sqlite-default' + System.getenv("MAVEN_UPLOAD_VERSION")
-    */
+    compile 'com.couchbase.lite:couchbase-lite-android:1.2.0-11'
+    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:1.2.0-11'
+    compile 'com.couchbase.lite:couchbase-lite-java-javascript:1.2.0-11'
+    compile 'com.couchbase.lite:couchbase-lite-java-listener:1.2.0-11'
 }
 
 android {
@@ -83,5 +57,4 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
     }
-
 }
