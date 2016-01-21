@@ -32,8 +32,6 @@ public class MainActivity extends Activity {
 
     private String storageType = "ForestDB+Encryption";
 
-    private static final String KEY_4_DATABASE = "Passw0rd";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +95,6 @@ public class MainActivity extends Activity {
         Manager manager;
         manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
         manager.setStorageType(Manager.FORESTDB_STORAGE);
-        manager.registerEncryptionKey(KEY_4_DATABASE, databaseName);
         return manager;
     }
 
