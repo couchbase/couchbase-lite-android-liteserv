@@ -98,13 +98,13 @@ public class MainActivity extends Activity {
     protected Manager startCBLite() throws IOException {
         Manager manager;
         manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
-        this.storageType = getStorageType();
-        if (storageType != null && storageType.compareToIgnoreCase(STORAGE_TYPE_FORESTDB) == 0)
-            this.storageType = Manager.FORESTDB_STORAGE;
-        else
-            this.storageType = Manager.SQLITE_STORAGE;
-        Log.i(TAG, "storageType: " + this.storageType);
-        manager.setStorageType(this.storageType);
+//        this.storageType = getStorageType();
+//        if (storageType != null && storageType.compareToIgnoreCase(STORAGE_TYPE_FORESTDB) == 0)
+//            this.storageType = Manager.FORESTDB_STORAGE;
+//        else
+//            this.storageType = Manager.SQLITE_STORAGE;
+//        Log.i(TAG, "storageType: " + this.storageType);
+//        manager.setStorageType(this.storageType);
         return manager;
     }
 
