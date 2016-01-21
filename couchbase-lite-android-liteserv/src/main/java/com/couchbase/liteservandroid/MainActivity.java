@@ -27,14 +27,9 @@ public class MainActivity extends Activity {
     private static final String LISTEN_LOGIN_PARAM_NAME = "username";
     private static final String LISTEN_PASSWORD_PARAM_NAME = "password";
 
-    private static final String STORAGE_TYPE_PARAM_NAME = "storage_type";
-    private static final String STORAGE_TYPE_FORESTDB = "ForestDB";
-    private static final String STORAGE_TYPE_SQLITE = "SQLite";
-
-
     public static String TAG = "LiteServ";
     private Credentials allowedCredentials;
-    private String storageType = STORAGE_TYPE_SQLITE;
+    private String storageType = "Custom SQLite";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +93,6 @@ public class MainActivity extends Activity {
     protected Manager startCBLite() throws IOException {
         Manager manager;
         manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
-//        this.storageType = getStorageType();
-//        if (storageType != null && storageType.compareToIgnoreCase(STORAGE_TYPE_FORESTDB) == 0)
-//            this.storageType = Manager.FORESTDB_STORAGE;
-//        else
-//            this.storageType = Manager.SQLITE_STORAGE;
-//        Log.i(TAG, "storageType: " + this.storageType);
-//        manager.setStorageType(this.storageType);
         return manager;
     }
 
@@ -123,10 +111,6 @@ public class MainActivity extends Activity {
 
     private String getPassword() {
         return getIntent().getStringExtra(LISTEN_PASSWORD_PARAM_NAME);
-    }
-
-    private String getStorageType() {
-        return getIntent().getStringExtra(STORAGE_TYPE_PARAM_NAME);
     }
 
     @Override
