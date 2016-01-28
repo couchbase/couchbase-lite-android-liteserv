@@ -31,10 +31,10 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile 'com.couchbase.lite:couchbase-lite-android:1.2.0-15'
-    compile 'com.couchbase.lite:couchbase-lite-android-sqlite-custom:1.2.0-15'
-    compile 'com.couchbase.lite:couchbase-lite-java-javascript:1.2.0-15'
-    compile 'com.couchbase.lite:couchbase-lite-java-listener:1.2.0-15'
+    compile 'com.couchbase.lite:couchbase-lite-android:1.2.0'
+    compile 'com.couchbase.lite:couchbase-lite-android-sqlite-custom:1.2.0'
+    compile 'com.couchbase.lite:couchbase-lite-java-javascript:1.2.0'
+    compile 'com.couchbase.lite:couchbase-lite-java-listener:1.2.0'
 }
 
 android {
