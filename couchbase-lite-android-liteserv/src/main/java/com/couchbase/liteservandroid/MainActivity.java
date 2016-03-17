@@ -77,10 +77,13 @@ public class MainActivity extends Activity {
         Manager manager = startCBLite(DATABASE_NAME);
         startDatabase(manager, DATABASE_NAME);
 
-
         if (getLogin()!=null && getPassword()!=null){
-            allowedCredentials = new Credentials(getLogin(), getPassword());
-        } else{
+            if(getLogin().equals("none") && getPassword().equals("none")) {
+                allowedCredentials = new Credentials("", "");
+            } else {
+                allowedCredentials = new Credentials(getLogin(), getPassword());
+            }
+        }  else {
             allowedCredentials = new Credentials();
         }
 
