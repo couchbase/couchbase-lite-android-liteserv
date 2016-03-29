@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     public static String TAG = "LiteServ";
     private Credentials allowedCredentials;
 
-    private String storageType = "ForestDB+Encryption";
+    private String storageType = "ForestDB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
