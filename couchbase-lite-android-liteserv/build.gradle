@@ -31,10 +31,10 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile 'com.couchbase.lite:couchbase-lite-android:0.0.0-640'
-    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:0.0.0-640'
-    compile 'com.couchbase.lite:couchbase-lite-java-javascript:0.0.0-640'
-    compile 'com.couchbase.lite:couchbase-lite-java-listener:0.0.0-640'
+    compile 'com.couchbase.lite:couchbase-lite-android:0.0.0-667'
+    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:0.0.0-667'
+    compile 'com.couchbase.lite:couchbase-lite-java-javascript:0.0.0-667'
+    compile 'com.couchbase.lite:couchbase-lite-java-listener:0.0.0-667'
 
     /*
     compile buildLiteServWithArtifacts == null ?
