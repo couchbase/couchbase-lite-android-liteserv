@@ -15,11 +15,8 @@ It is useful for:
 
 ## Getting LiteServ 
 
-
 ```
 git clone https://github.com/couchbaselabs/couchbase-lite-android-liteserv.git
-cd couchbase-lite-android-liteserv
-git submodule update --init --recursive
 ```
 
 ## Import Project into Android Studio
@@ -41,6 +38,11 @@ If you want to host and deploy your own maven artifacts, see the `extra/jenkins_
 
 **Build**
 
+- With specifying CBL version and storage type
+```bash
+$ ./gradlew clean && ./gradlew -Dversion=0.0.0-688 -Dstorage=SQLite assemble
+```
+- without parameters
 ```bash
 $ ./gradlew clean && ./gradlew assemble
 ```
