@@ -3,7 +3,7 @@
  */
 apply plugin: 'maven'
 
-final String DEF_VERSION = "0.0.0-688"
+final String DEF_VERSION = "1.2.1"
 final String DEF_STORAGEE = "SQLite" // SQLite or ForestDB
 
 println System.getProperty('version', DEF_VERSION)
