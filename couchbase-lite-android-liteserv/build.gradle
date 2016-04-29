@@ -30,10 +30,10 @@ dependencies {
     compile 'com.android.support:support-v4:13.0.+'
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile 'com.couchbase.lite:couchbase-lite-android:' + System.getProperty('VERSION', DEF_VERSION)
-    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:' + System.getProperty('VERSION', DEF_VERSION)
-    compile 'com.couchbase.lite:couchbase-lite-java-javascript:' + System.getProperty('VERSION', DEF_VERSION)
-    compile 'com.couchbase.lite:couchbase-lite-java-listener:' + System.getProperty('VERSION', DEF_VERSION)
+    compile 'com.couchbase.lite:couchbase-lite-android:' + System.getProperty('version', DEF_VERSION)
+    compile 'com.couchbase.lite:couchbase-lite-android-forestdb:' + System.getProperty('version', DEF_VERSION)
+    compile 'com.couchbase.lite:couchbase-lite-java-javascript:' + System.getProperty('version', DEF_VERSION)
+    compile 'com.couchbase.lite:couchbase-lite-java-listener:' + System.getProperty('version', DEF_VERSION)
 }
 
 android {
