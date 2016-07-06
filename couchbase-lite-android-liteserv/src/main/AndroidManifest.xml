@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme" >
 
         <meta-data android:name="storage" android:value="${storage}" />
+        <meta-data android:name="dbpassword" android:value="${dbpassword}" />
 
         <activity
             android:name="com.couchbase.liteservandroid.MainActivity"

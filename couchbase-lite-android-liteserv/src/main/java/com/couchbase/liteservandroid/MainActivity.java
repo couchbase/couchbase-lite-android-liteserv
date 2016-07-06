@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
+import com.couchbase.lite.DatabaseOptions;
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.View;
 import com.couchbase.lite.android.AndroidContext;
@@ -19,6 +20,7 @@ import com.couchbase.lite.listener.Credentials;
 import com.couchbase.lite.listener.LiteListener;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class MainActivity extends Activity {
     private static final int DEFAULT_LISTEN_PORT = 5984;
@@ -26,10 +28,12 @@ public class MainActivity extends Activity {
     private static final String LISTEN_PORT_PARAM_NAME = "listen_port";
     private static final String LISTEN_LOGIN_PARAM_NAME = "username";
     private static final String LISTEN_PASSWORD_PARAM_NAME = "password";
-    public static String TAG = "LiteServ";
+    private static final String TAG = "LiteServ";
 
+    private String dbPassword = null;
     private Credentials allowedCredentials;
     private String storageType = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +44,15 @@ public class MainActivity extends Activity {
         ApplicationInfo info = null;
         try {
             info = getApplicationContext().getPackageManager().getApplicationInfo(getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
-            storageType = (String)info.metaData.get("storage");
+            storageType = (String) info.metaData.get("storage");
+            dbPassword = (String) info.metaData.get("dbpassword");
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "failed to obtain meta data from AndroidManifest.xml", e);
             storageType = "sqlite";
+            dbPassword = null;
         }
         Log.i(TAG, "storageType=" + storageType);
+        Log.i(TAG, "dbpassword=" + dbPassword);
 
         // Register the JavaScript view compiler
         View.setCompiler(new JavaScriptViewCompiler());
@@ -65,7 +72,10 @@ public class MainActivity extends Activity {
     private void showListenPort(int listenPort) {
         Log.d(TAG, "listenPort: " + listenPort);
         TextView listenPortTextView = (TextView) findViewById(R.id.listen_port_textview);
-        listenPortTextView.setText(String.format("Listening on port: %d.  Db: %s Storage: %s", listenPort, DATABASE_NAME, storageType));
+        listenPortTextView.setText(String.format(
+                "Listening on port: %d.  Db: %s Storage: %s dbpasword: %s",
+                listenPort, DATABASE_NAME, storageType,
+                dbPassword != null && dbPassword.length() > 0 ? "yes" : "no"));
     }
 
     private void showListenCredentials() {
@@ -116,11 +126,26 @@ public class MainActivity extends Activity {
     protected Manager startCBLite() throws IOException {
         Manager manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
         manager.setStorageType(storageType);
+        if (dbPassword != null && dbPassword.length() > 0) {
+            String[] passwords = dbPassword.split(",");
+            for (String password : passwords) {
+                String[] items = password.split(":");
+                manager.registerEncryptionKey(items[1], items[0]);
+            }
+        }
         return manager;
     }
 
     protected void startDatabase(Manager manager, String databaseName) throws CouchbaseLiteException {
-        Database database = manager.getDatabase(databaseName);
+        DatabaseOptions options = new DatabaseOptions();
+        options.setCreate(true);
+        options.setStorageType(storageType);
+        if (dbPassword != null && dbPassword.length() > 0) {
+            Map keys = manager.getEncryptionKeys();
+            if (keys.containsKey(DATABASE_NAME))
+                options.setEncryptionKey(keys.get(DATABASE_NAME));
+        }
+        Database database = manager.openDatabase(DATABASE_NAME, options);
         database.open();
     }
 
