@@ -4,7 +4,6 @@ include ':couchbase-lite-android-liteserv'/*,
 		':libraries:couchbase-lite-java-forestdb',
 		':libraries:couchbase-lite-java-javascript',
 		':libraries:couchbase-lite-java-listener',
-		':libraries:couchbase-lite-java-native:sqlite-default',
 		':libraries:couchbase-lite-java-native:sqlite-custom',
 		':libraries:couchbase-lite-java-native:sqlcipher'*/
 

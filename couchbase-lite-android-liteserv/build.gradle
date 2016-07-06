@@ -1,13 +1,15 @@
 /**
- * ./gradlew -Dversion=0.0.0-688 -Dstorage=SQLite|ForestDB <task>
+ * ./gradlew -Dversion=0.0.0-688 -Dstorage=SQLite|ForestDB -Ddbpassword={dbname}:{password},... <task>
  */
 apply plugin: 'maven'
 
 final String DEF_VERSION = "1.2.1"
 final String DEF_STORAGEE = "SQLite" // SQLite or ForestDB
+final String DEF_DBPASSWORD = ""; // null or empty -> no encryption password, with password -> enc
 
-println System.getProperty('version', DEF_VERSION)
-println System.getProperty('storage', DEF_STORAGEE)
+println "version=" + System.getProperty('version', DEF_VERSION)
+println "storage=" + System.getProperty('storage', DEF_STORAGEE)
+println "dbpassword=" + System.getProperty('dbpassword', DEF_DBPASSWORD)
 
 repositories {
     jcenter()
@@ -32,6 +34,7 @@ dependencies {
 
     compile 'com.couchbase.lite:couchbase-lite-android:' + System.getProperty('version', DEF_VERSION)
     compile 'com.couchbase.lite:couchbase-lite-android-forestdb:' + System.getProperty('version', DEF_VERSION)
+    compile 'com.couchbase.lite:couchbase-lite-android-sqlcipher:' + System.getProperty('version', DEF_VERSION)
     compile 'com.couchbase.lite:couchbase-lite-java-javascript:' + System.getProperty('version', DEF_VERSION)
     compile 'com.couchbase.lite:couchbase-lite-java-listener:' + System.getProperty('version', DEF_VERSION)
 }
@@ -43,7 +46,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
-        manifestPlaceholders = [storage: System.getProperty('storage', DEF_STORAGEE)]
+        manifestPlaceholders = [storage: System.getProperty('storage', DEF_STORAGEE), dbpassword: System.getProperty('dbpassword', DEF_DBPASSWORD)]
     }
 
     lintOptions {
