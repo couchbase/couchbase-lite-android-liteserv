@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
     private static final String LISTEN_PORT_PARAM_NAME = "listen_port";
     private static final String LISTEN_LOGIN_PARAM_NAME = "username";
     private static final String LISTEN_PASSWORD_PARAM_NAME = "password";
+    private static final String DB_PASSWORD_PARAM_NAME = "dbpassword";
+    private static final String STORAGE_TYPE_PARAM_NAME = "storage";
     private static final String TAG = "LiteServ";
 
     private String dbPassword = null;
@@ -51,6 +53,12 @@ public class MainActivity extends Activity {
             storageType = "sqlite";
             dbPassword = null;
         }
+
+        if (getStorageType() != null)
+            storageType = getStorageType();
+        if(getDBPassword() != null)
+            dbPassword = getDBPassword();
+
         Log.i(TAG, "storageType=" + storageType);
         Log.i(TAG, "dbpassword=" + dbPassword);
 
@@ -160,6 +168,15 @@ public class MainActivity extends Activity {
     private String getPassword() {
         return getIntent().getStringExtra(LISTEN_PASSWORD_PARAM_NAME);
     }
+
+    private String getDBPassword() {
+        return getIntent().getStringExtra(DB_PASSWORD_PARAM_NAME);
+    }
+
+    private String getStorageType() {
+        return getIntent().getStringExtra(STORAGE_TYPE_PARAM_NAME);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
