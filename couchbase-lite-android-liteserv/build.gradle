@@ -1,7 +1,7 @@
 /**
  * ./gradlew -Dversion=0.0.0-688 -Dfeature=basic|full -Dstorage=SQLite|ForestDB -Ddbpassword={dbname}:{password},... <task>
  */
-final String DEF_VERSION = "1.3.0"
+final String DEF_VERSION = "1.3.1"
 final String DEF_FEATURE = "basic"
 final String DEF_STORAGEE = "SQLite" // SQLite or ForestDB
 final String DEF_DBPASSWORD = ""; // null or empty -> no encryption password, with password -> enc
