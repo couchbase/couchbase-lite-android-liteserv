@@ -92,9 +92,10 @@ public class MainActivity extends Activity {
         Log.d(TAG, "listenPort: " + listenPort);
         TextView listenPortTextView = (TextView) findViewById(R.id.listen_port_textview);
         listenPortTextView.setText(String.format(
-                "Listening on port: %d.  Db: %s Storage: %s dbpasword: %s",
+                "Listening on port: %d, DB: %s, Storage: %s, dbpasword: %s, ssl:%s",
                 listenPort, DATABASE_NAME, storageType,
-                dbPassword != null && dbPassword.length() > 0 ? "yes" : "no"));
+                dbPassword != null && dbPassword.length() > 0 ? "yes" : "no",
+                isSSL()?"on":"off"));
     }
 
     private void showListenCredentials() {
@@ -213,7 +214,8 @@ public class MainActivity extends Activity {
     }
 
     private boolean isSSL() {
-        return getIntent().getBooleanExtra(SSL, false);
+        String strSSL = getIntent().getStringExtra(SSL);
+        return Boolean.parseBoolean(strSSL);
     }
 
     @Override
