@@ -22,16 +22,22 @@
 
         <TARGET_DIR>${local-m2dir}/com/couchbase/lite</TARGET_DIR>
         <ZIP_HOME>${basedir}/zip</ZIP_HOME>
+        
+        <LITESERVE_ARTID>   couchbase-lite-android-liteserv                               </LITESERVE_ARTID>
+        <JAR_LITESERVE>                   ${LITESERVE_ARTID}-${REVISION}.jar              </JAR_LITESERVE>
+        <JAR_SRC_LITESERVE> ${TARGET_DIR}/${LITESERVE_ARTID}/${REVISION}/${JAR_LITESERVE} </JAR_SRC_LITESERVE>
+        <POM_LITESERVE>                   ${LITESERVE_ARTID}-${REVISION}.pom              </POM_LITESERVE>
+        <POM_SRC_LITESERVE> ${TARGET_DIR}/${LITESERVE_ARTID}/${REVISION}/${POM_LITESERVE} </POM_SRC_LITESERVE>
 
         <AND_CLASS_AAR> couchbase-lite-android-${REVISION}.aar          </AND_CLASS_AAR>
         <JAR_JAVA_CORE> couchbase-lite-java-core-${REVISION}.jar        </JAR_JAVA_CORE>
         <JAR_JA_SCRIPT> couchbase-lite-java-javascript-${REVISION}.jar  </JAR_JA_SCRIPT>
         <JAR_JLISTENER> couchbase-lite-java-listener-${REVISION}.jar    </JAR_JLISTENER>
 
-        <AND_CLASS_AAR_SRC> ${TARGET_DIR}/couchbase-lite-android/${REVISION}/${AND_CLASS_AAR}          </AND_CLASS_AAR_SRC>
-        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/couchbase-lite-java-core/${REVISION}/${JAR_JAVA_CORE}        </JAR_SRC_JAVA_CORE>
-        <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/couchbase-lite-java-javascript/${REVISION}/${JAR_JA_SCRIPT}  </JAR_SRC_JA_SCRIPT>
-        <JAR_SRC_JLISTENER> ${TARGET_DIR}/couchbase-lite-java-listener/${REVISION}/${JAR_JLISTENER}    </JAR_SRC_JLISTENER>
+        <AND_CLASS_AAR_SRC> ${TARGET_DIR}/couchbase-lite-android/${REVISION}/${AND_CLASS_AAR}           </AND_CLASS_AAR_SRC>
+        <JAR_SRC_JAVA_CORE> ${TARGET_DIR}/couchbase-lite-java-core/${REVISION}/${JAR_JAVA_CORE}         </JAR_SRC_JAVA_CORE>
+        <JAR_SRC_JA_SCRIPT> ${TARGET_DIR}/couchbase-lite-java-javascript/${REVISION}/${JAR_JA_SCRIPT}   </JAR_SRC_JA_SCRIPT>
+        <JAR_SRC_JLISTENER> ${TARGET_DIR}/couchbase-lite-java-listener/${REVISION}/${JAR_JLISTENER}     </JAR_SRC_JLISTENER>
 
         <STAGING>${basedir}/staging</STAGING>
 
@@ -69,6 +75,13 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.couchbase.lite</groupId>
+            <artifactId>couchbase-lite-android-liteserv</artifactId>
+            <type>jar</type>
+            <version>${REVISION}</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>com.couchbase.lite</groupId>
             <artifactId>couchbase-lite-android</artifactId>
@@ -256,10 +269,12 @@
                                  <copy file="${AND_CLASS_AAR_SRC}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
+                                 <copy file="${JAR_SRC_LITESERVE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${JAR_SRC_JLISTENER}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  
+                                 <copy file="${POM_SRC_LITESERVE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_AND_CLASS}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JAVA_CORE}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />
                                  <copy file="${POM_SRC_JA_SCRIPT}" todir="${ZIP_HOME}"  preservelastmodified="true" flatten="true" verbose="true" />

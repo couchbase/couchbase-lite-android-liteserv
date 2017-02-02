@@ -13,6 +13,11 @@
         </file>
                                  <!-- locally built  -->
         <file>
+            <source> ${ZIP_HOME}/${JAR_LITESERVE} </source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </file>
+        <file>
             <source> ${ZIP_HOME}/${JAR_JAVA_CORE} </source>
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
